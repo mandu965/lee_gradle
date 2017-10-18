@@ -33,20 +33,23 @@ jar {
                    'Implementation-Version': version
     }
 }
- 
+ //maven Repository 사용
 repositories {
     mavenCentral()
 }
- 
+ //http://kwon37xi.egloos.com/4747016
 dependencies {
     // ${version.~}변수는 위에서 정의한 버전으로 사용됩니다.
     providedCompile "javax.servlet:javax.servlet-api:${version.servletAPI}"
-     
     compile "org.springframework:spring-webmvc:${version.spring}"
-     
+    compile("org.springframework.boot:spring-boot-starter-web:1.5.8.RELEASE")
     compile "org.slf4j:slf4j-api:${version.slf4j}"
     compile group: 'commons-collections', name: 'commons-collections', version: "${version.commonsCollections}"
     testCompile group: 'junit', name: 'junit', version: "${version.junit}"
+    
+    //compile('org.springframework.boot:spring-boot-starter-web') /* spring boot 추가 */
+	//compile('javax.servlet:jstl') /*jsp를 사용하기 위해 jstl 추가 */
+	//compile('org.apache.tomcat.embed:tomcat-embed-jasper') /*내장 톰켓에서 jstl 인식하도록 추가*/
 }
  
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8' // 인코딩 UTF-8로 통일합니다.

@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class IndexController {
+public class MainController {
 	//Âü°í http://dynaticy.tistory.com/category/Dev%20Story/Gradle
 	// http://stag.tistory.com/22
-	private static final Logger logger = LoggerFactory.getLogger(IndexController.class);
+	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 
  	@RequestMapping(value = "/", method = RequestMethod.GET)
     public String home(Locale locale, Model model) {
@@ -27,6 +27,7 @@ public class IndexController {
         String formattedDate = dateFormat.format(date);
          
         model.addAttribute("serverTime", formattedDate );
+        
          
         return "index";
     }

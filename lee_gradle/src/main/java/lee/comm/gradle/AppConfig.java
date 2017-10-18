@@ -8,15 +8,15 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-import lee.main.controller.IndexController;
+import lee.main.controller.MainController;
 
 @Configuration
 @EnableWebMvc
 public class AppConfig extends WebMvcConfigurerAdapter {
  
     @Bean
-    public IndexController homeController(){
-        return new IndexController();
+    public MainController homeController(){
+        return new MainController();
     }
      
     @Override
