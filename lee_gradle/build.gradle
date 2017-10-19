@@ -13,7 +13,6 @@ spring: '4.1.6.RELEASE',
 servletAPI: '3.1.0',
 commonsCollections: '3.2.1',
 junit: '4.12',
-slf4j: '1.7.12'
 ]
  
 eclipse {
@@ -43,7 +42,7 @@ dependencies {
     providedCompile "javax.servlet:javax.servlet-api:${version.servletAPI}"
     compile "org.springframework:spring-webmvc:${version.spring}"
     compile("org.springframework.boot:spring-boot-starter-web:1.5.8.RELEASE")
-    compile "org.slf4j:slf4j-api:${version.slf4j}"
+    //compile "org.slf4j:slf4j-api:${version.slf4j}"
     compile group: 'commons-collections', name: 'commons-collections', version: "${version.commonsCollections}"
     testCompile group: 'junit', name: 'junit', version: "${version.junit}"
     

@@ -7,13 +7,12 @@ import java.util.Locale;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import lee.domain.UserVO;
+import lee.domain.UsrVO;
 import lee.main.repository.MainRepository;
 
 @Controller
@@ -35,15 +34,17 @@ public class MainController {
         String formattedDate = dateFormat.format(date);
          
         model.addAttribute("serverTime", formattedDate );
-        logger.info("ƒı∏Æ Ω√¿€" + mainRepository.getUser());
-        UserVO userVO = mainRepository.getUser() ;
+        //logger.info("ƒı∏Æ Ω√¿€" + mainRepository.getUsr());
+        UsrVO userVO = mainRepository.getUsr() ;
         if(userVO!=null) {
         	logger.info("success");
+        	logger.info(mainRepository.getUsr().getUsr_id() + "---" + mainRepository.getUsr().getUsr_nm());
+        	System.out.println(mainRepository.getUsr().getUsr_id() + "---" + mainRepository.getUsr().getUsr_nm());
         }else {
         	logger.info("fail");
         }
-        model.addAttribute("user", mainRepository.getUser() );
-        //logger.info(mainRepository.getUser().getUser_id() + "---" + mainRepository.getUser().getUser_name());
+        model.addAttribute("usr", mainRepository.getUsr() );
+       
          
         return "index";
     }

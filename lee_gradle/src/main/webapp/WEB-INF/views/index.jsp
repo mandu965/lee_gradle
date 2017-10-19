@@ -10,10 +10,10 @@
 test
 The time on the server is ${serverTime}.
 <br>
-로그인 사용자 : ${user.usr_id} <br>22
-로그인 사용자 명 : ${user.usr_nm}
-<c:forEach var="item" items="${user}">
-        <li>${item.usr_name}</li>
+로그인 사용자 : ${usr.usr_id} <br>22
+로그인 사용자 명 : ${usr.usr_nm}
+<c:forEach var="item" items="${usr}">
+        <li>${item.usr_nm}</li>22
     </c:forEach>
 </body>
 </html>
