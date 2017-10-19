@@ -2,13 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="lee.main.repository.MainRepository"> 
 
-	<select id="getUser" parameterType="String" resultType="UserVO"> 
+	<select id="getUser" resultType="lee.domain.UserVO"> 
 		SELECT
 			usr_id,  usr_nm
 		FROM
 			ck_usr
 		WHERE
-			usr_id = 1
+			usr_id = '1'
 	 </select> 
 	 
  </mapper>
