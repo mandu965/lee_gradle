@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class MainController {
-	//참고 http://dynaticy.tistory.com/category/Dev%20Story/Gradle
+	//참고 http://dynaticy.tistory.com/category/Dev%20Story/Gradle 22
 	// http://stag.tistory.com/22
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 
