@@ -47,9 +47,12 @@ dependencies {
     compile group: 'commons-collections', name: 'commons-collections', version: "${version.commonsCollections}"
     testCompile group: 'junit', name: 'junit', version: "${version.junit}"
     
-    //compile('org.springframework.boot:spring-boot-starter-web') /* spring boot 추가 */
-	//compile('javax.servlet:jstl') /*jsp를 사용하기 위해 jstl 추가 */
-	//compile('org.apache.tomcat.embed:tomcat-embed-jasper') /*내장 톰켓에서 jstl 인식하도록 추가*/
+    compile('org.springframework.boot:spring-boot-starter-web') /* spring boot 추가 */
+	compile('javax.servlet:jstl') /*jsp를 사용하기 위해 jstl 추가 */
+	compile('org.apache.tomcat.embed:tomcat-embed-jasper') /*내장 톰켓에서 jstl 인식하도록 추가*/
+	
+	compile('org.mybatis.spring.boot:mybatis-spring-boot-starter:1.1.1') // MyBatis 라이브러리
+	compile fileTree(dir: '/webapp/WEB-INF/lib', include: ['*.jar'])
 }
  
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8' // 인코딩 UTF-8로 통일합니다.
