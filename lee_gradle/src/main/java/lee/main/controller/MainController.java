@@ -19,7 +19,7 @@ import lee.main.service.MainService;
 public class MainController {
 	//Âü°í http://dynaticy.tistory.com/category/Dev%20Story/Gradle 22
 	// http://stag.tistory.com/22
-	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
+	//private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 
 	@Autowired
 	MainService mainService;

@@ -53,7 +53,9 @@ dependencies {
     compile "org.slf4j:slf4j-api:${version.slf4j}"
     
     /*내장 톰켓에서 jstl 인식하도록 추가*/
-    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '${version.tomcat_embed}'
+    //compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '${version.tomcat_embed}'
+	compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '8.5.20'
+    
 	compile('javax.servlet:jstl:1.2') /*jsp를 사용하기 위해 jstl 추가 */
 	
 	
