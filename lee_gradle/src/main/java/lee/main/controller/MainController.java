@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import lee.domain.UsrVO;
-import lee.main.repository.MainRepository;
+import lee.main.service.MainService;
 
 @Controller
 public class MainController {
@@ -22,12 +22,12 @@ public class MainController {
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 
 	@Autowired
-	MainRepository mainRepository;
+	MainService mainService;
 	
 	//*@Controller + @ResponseBody말고 @RestController만 써도 됩니다.
  	@RequestMapping(value = "/", method = RequestMethod.GET)
     public String home(Locale locale, Model model) {
-        logger.info("Welcome home! The client locale is {}.", locale);
+        
         Date date = new Date();
         DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
          
@@ -35,15 +35,9 @@ public class MainController {
          
         model.addAttribute("serverTime", formattedDate );
 
-        UsrVO userVO = mainRepository.getUsr() ;
-        if(userVO!=null) {
-        	logger.info("success");
-        	logger.info(mainRepository.getUsr().getUsr_id() + "---" + mainRepository.getUsr().getUsr_nm());
-        	System.out.println(mainRepository.getUsr().getUsr_id() + "---" + mainRepository.getUsr().getUsr_nm());
-        }else {
-        	logger.info("fail");
-        }
-        model.addAttribute("usr", mainRepository.getUsr() );
+        UsrVO usrVO = mainService.getUsr() ;
+        
+        model.addAttribute("usr", usrVO );
        
          
         return "index";

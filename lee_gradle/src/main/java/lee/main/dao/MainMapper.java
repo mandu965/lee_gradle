@@ -1,11 +1,9 @@
-package lee.main.repository;
-
-import org.apache.ibatis.annotations.Mapper;
+package lee.main.dao;
 
 import lee.domain.UsrVO;
 
-@Mapper
-public interface MainRepository {
+
+public interface MainMapper {
 	UsrVO getUsr();
 }
 
