@@ -13,10 +13,15 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+import lee.main.controller.MainController;
+
 @Configuration
 @EnableWebMvc
 public class AppConfig extends WebMvcConfigurerAdapter {
-
+	@Bean
+	   public MainController homeController(){
+	        return new MainController();
+	    }
      
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {

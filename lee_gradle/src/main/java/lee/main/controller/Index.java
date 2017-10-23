@@ -5,11 +5,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan(basePackages = "lee.main.repository")
+@MapperScan(basePackages = "lee.main")
 public class Index {
 	public static void main(String[] args) {
-		System.out.println("#############################################");
         SpringApplication.run(Index.class);
     }
 
 }
+//@SpringBootApplication = @Configuration + @EnableAutoConfiguration + @ComponentScan
