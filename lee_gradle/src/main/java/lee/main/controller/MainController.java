@@ -24,6 +24,7 @@ public class MainController {
 	@Autowired
 	MainRepository mainRepository;
 	
+	//*@Controller + @ResponseBody말고 @RestController만 써도 됩니다.
  	@RequestMapping(value = "/", method = RequestMethod.GET)
     public String home(Locale locale, Model model) {
         logger.info("Welcome home! The client locale is {}.", locale);
