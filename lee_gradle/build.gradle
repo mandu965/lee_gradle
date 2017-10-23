@@ -13,6 +13,7 @@ spring: '4.1.6.RELEASE',
 servletAPI: '3.1.0',
 commonsCollections: '3.2.1',
 junit: '4.12',
+slf4j: '1.7.12'
 ]
  
 eclipse {
@@ -42,14 +43,14 @@ dependencies {
     providedCompile "javax.servlet:javax.servlet-api:${version.servletAPI}"
     compile "org.springframework:spring-webmvc:${version.spring}"
     compile("org.springframework.boot:spring-boot-starter-web:1.5.8.RELEASE")
-    //compile "org.slf4j:slf4j-api:${version.slf4j}"
+    compile "org.slf4j:slf4j-api:${version.slf4j}"
     compile group: 'commons-collections', name: 'commons-collections', version: "${version.commonsCollections}"
     testCompile group: 'junit', name: 'junit', version: "${version.junit}"
     
-    compile('org.springframework.boot:spring-boot-starter-web') /* spring boot 추가 */
-	compile('javax.servlet:jstl') /*jsp를 사용하기 위해 jstl 추가 */
-	compile('org.apache.tomcat.embed:tomcat-embed-jasper') /*내장 톰켓에서 jstl 인식하도록 추가*/
-	
+	compile('javax.servlet:jstl:1.2') /*jsp를 사용하기 위해 jstl 추가 */
+	/*내장 톰켓에서 jstl 인식하도록 추가*/
+	compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '8.5.20'
+	// 읽기 http://dynaticy.tistory.com/10
 	compile('org.mybatis.spring.boot:mybatis-spring-boot-starter:1.1.1') // MyBatis 라이브러리
 	compile fileTree(dir: '/webapp/WEB-INF/lib', include: ['*.jar'])
 }
