@@ -18,11 +18,7 @@ import lee.main.controller.MainController;
 @Configuration
 @EnableWebMvc
 public class AppConfig extends WebMvcConfigurerAdapter {
-	@Bean
-	   public MainController homeController(){
-	        return new MainController();
-	    }
-     
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         // TODO Auto-generated method stub
