@@ -45,26 +45,25 @@ dependencies {
     compile group: 'commons-collections', name: 'commons-collections', version: "${version.commonsCollections}"
     testCompile group: 'junit', name: 'junit', version: "${version.junit}"
     
-    //${version.~}변수는 위에서 정의한 버전으로 사용됩니다.
+    //${version.~} manage
     //추가
     providedCompile "javax.servlet:javax.servlet-api:${version.servletAPI}"
     compile "org.springframework:spring-webmvc:${version.spring}"
     compile "org.springframework.boot:spring-boot-starter-web:${version.spring_boot}"
     compile "org.slf4j:slf4j-api:${version.slf4j}"
     
-    /*내장 톰켓에서 jstl 인식하도록 추가*/
     //compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '${version.tomcat_embed}'
 	compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '8.5.20'
     
-	compile('javax.servlet:jstl:1.2') /*jsp를 사용하기 위해 jstl 추가 */
+	compile('javax.servlet:jstl:1.2') /*jsp */
 	
 	
 	// 읽기 http://dynaticy.tistory.com/10
-	compile "org.mybatis.spring.boot:mybatis-spring-boot-starter:${version.mybatis}" // MyBatis 라이브러리
+	compile "org.mybatis.spring.boot:mybatis-spring-boot-starter:${version.mybatis}" // MyBatis 
 	compile fileTree(dir: '/webapp/WEB-INF/lib', include: ['*.jar'])
 }
  
-[compileJava, compileTestJava]*.options*.encoding = 'UTF-8' // 인코딩 UTF-8로 통일합니다.
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8' // UTF 8 compile
  
 test {
     systemProperties 'property': 'value'

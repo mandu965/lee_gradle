@@ -12,12 +12,9 @@
 <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 <script>
-
-// refrence blog?
-//http://zzznara2.tistory.com/category
 $(document).ready(function(){
-
 	$("#singUpBtn").click(function(){
+
 		$("#signForm").attr('action', '/join/usrAdd').submit();
 	})
 })
@@ -37,7 +34,7 @@ $(document).ready(function(){
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">Project name</a>
+          <a class="navbar-brand" href="#">Project name</a>
           <a class="navbar-brand" href="#">notice</a>
           <a class="navbar-brand" href="#">board</a>
         </div>

@@ -8,11 +8,11 @@ import lee.main.dao.MainMapper;
 
 @Service
 public class MainService {
+	
 	@Autowired
 	MainMapper mainRepository;
 	
 	public UsrVO getUsr() {
-		System.out.println("로직 테스트");
 		return mainRepository.getUsr();
 	}
 
