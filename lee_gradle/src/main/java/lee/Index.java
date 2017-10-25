@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @MapperScan(basePackages = {"lee"}) //mpperScan search
-@ComponentScan({"lee.main, lee.join"}) 
+@ComponentScan({"lee.main, lee.join, lee.login"}) 
 public class Index {
 	public static void main(String[] args) {
         SpringApplication.run(Index.class);

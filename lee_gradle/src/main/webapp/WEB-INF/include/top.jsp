@@ -12,10 +12,23 @@
 
 <script>
 $(document).ready(function(){
-	$("#mainBtn").click(function(){
-		$(location).attr('href', '/')
-		return false;
-	})
+	$("#singUpBtn").click(function(){
+		$("#signForm").attr('action', '/join/usrAdd').submit();
+	});
+	$("#singInBtn").click(function(){
+		$.ajax({
+			url: '/login/loginPro',
+			data: $("#signForm").serialize(),
+			type: 'post',
+			dataType: 'json',
+			error: function(){
+				alert('요청하신 페이지에 문제가 있어 표시할 수 없습니다.');
+			},
+			success: function(json){
+				alert(json.id);
+			}
+		});
+	});
 })
 </script>
 
@@ -23,8 +36,7 @@ $(document).ready(function(){
 <title>Insert title here</title>
 </head>
 <body>
- 	<jsp:include page="/WEB-INF/include/top.jsp" flush="true" />
- <!-- 
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -39,31 +51,23 @@ $(document).ready(function(){
           <a class="navbar-brand" href="#">board</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right">
+          <form class="navbar-form navbar-right" id="signForm">
             <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
+              <input type="text" placeholder="Id" class="form-control" id="id" name="id">
             </div>
             <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
+              <input type="password" placeholder="Password" class="form-control" id="pwd" name="pwd">
             </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
+            <button type="submit" class="btn btn-success" id="singInBtn">Sign in</button>
             <button class="btn btn-success" id="singUpBtn">Sign up</button>
           </form>
-        </div>/.navbar-collapse
+        </div><!--/.navbar-collapse -->
       </div>
     </nav>
- -->
+
     <!-- Main jumbotron for a primary marketing message or call to action -->
     
-<div class="container">
-  	<p class="bg-primary">회원가입이 완료 되었습니다.1</p>
-	<p class="bg-success">회원가입이 완료 되었습니다.2</p>
-	<p class="bg-info">회원가입이 완료 되었습니다.3</p>
-	<p class="bg-warning">회원가입이 완료 되었습니다.4</p>
-	<p class="bg-danger">회원가입이 완료 되었습니다.5</p>
-	
-	<button type="button" class="btn btn-success" id="mainBtn">메인으로 이동</button>
-</div>
+
 
  <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
