@@ -35,9 +35,9 @@ public class MainController {
          
         model.addAttribute("serverTime", formattedDate );
 
-        UsrVO usrVO = mainService.getUsr() ;
+        //UsrVO usrVO = mainService.getUsr() ;
         
-        model.addAttribute("usr", usrVO );
+        //model.addAttribute("usr", usrVO );
        
          
         return "index";
