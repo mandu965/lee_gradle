@@ -7,7 +7,7 @@ targetCompatibility = 1.8
  
 version = '1.0'
  
-// ¹öÀü°ü¸®
+//version
 def version = [
 spring: '4.1.6.RELEASE',
 servletAPI: '3.1.0',
