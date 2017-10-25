@@ -56,53 +56,11 @@ $(document).ready(function(){
     <!-- Main jumbotron for a primary marketing message or call to action -->
     
 <div class="container">
-  <h2>Info</h2>
-  <p>Make the viewport larger than 768px wide to see that all of the form elements are inline, left aligned, and the labels are alongside.</p>
-  <!-- class="form-inline"  -->
-  
-  <div class="col-md-6">
-	  <form id="usrVO">
-	  	<div class="form-group">
-	      <label for="usr_nm">Name:</label>
-	      <input type="text" class="form-control" id="usr_nm" placeholder="Enter name" name="usr_nm">
-	    </div>
-	    
-	    <div class="form-group">
-	      <label for="usr_id">ID:</label>
-	      <input type="text" class="form-control" id="usr_id" placeholder="Enter Id" name="usr_id">
-	    </div>
-	    
-	    <div class="form-group">
-	      <label for="usr_pw">Password:</label>
-	      <input type="password" class="form-control" id="usr_pw" placeholder="Enter password" name="usr_pw">
-	    </div>
-	    	    
- 		<div class="form-group">
-	      	<label for="usr_sex">성별 : </label><br>
-	    	<label class="radio-inline"><input type="radio" name="usr_sex" value="M" checked>남</label>
-			<label class="radio-inline"><input type="radio" name="usr_sex" value="W">여</label>
-	    </div>	    
-	    
-	    <div class="form-group">
-	      <label for="email">Email:</label>
-	      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
-	    </div>
-	    
-	    <div class="form-group">
-	      <label for="usr_addr">Address:</label>
-	      <input type="text" class="form-control" id="usr_addr" placeholder="Enter Addr" name="usr_addr">
-	    </div>
-	    
-	    <!-- 비밀번호 확인  -->
-	    
-	    <!-- <div class="checkbox">
-	      <label><input type="checkbox" name="emaiRcvAgree"> email 수신 여부</label>
-	    </div> -->
-	    
-	    <button class="btn btn-default" id="usrAddBtn">가입</button>
-	    <button class="btn btn-default" id="usrCnclBtn">취소</button>
-	  </form>
-	</div>
+  	<p class="bg-primary">회원가입이 완료 되었습니다.1</p>
+	<p class="bg-success">회원가입이 완료 되었습니다.2</p>
+	<p class="bg-info">회원가입이 완료 되었습니다.3</p>
+	<p class="bg-warning">회원가입이 완료 되었습니다.4</p>
+	<p class="bg-danger">회원가입이 완료 되었습니다.5</p>
 </div>
 
  <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->

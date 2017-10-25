@@ -51,6 +51,8 @@ $(document).ready(function(){
             </div>
             <button type="submit" class="btn btn-success">Sign in</button>
             <button class="btn btn-success" id="singUpBtn">Sign up</button>
+            <br>
+            <font color="white">${usr.usr_id} 님 환영합니다.</font>
           </form>
         </div><!--/.navbar-collapse -->
       </div>

@@ -10,6 +10,7 @@ public class UsrVO {
 	private String usr_auth_cd;
 	private String reg_date;
     private String usr_pw;
+    private long usr_no;
 	
 	public String getUsr_id() {
 		return usr_id;
@@ -64,6 +65,12 @@ public class UsrVO {
 	}
 	public void setUsr_pw(String usr_pw) {
 		this.usr_pw = usr_pw;
+	}
+	public long getUsr_no() {
+		return usr_no;
+	}
+	public void setUsr_no(long usr_no) {
+		this.usr_no = usr_no;
 	}
 	
 	

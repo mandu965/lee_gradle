@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import lee.domain.UsrVO;
 import lee.main.service.MainService;
 
 @Controller
@@ -31,9 +32,9 @@ public class MainController {
          
         model.addAttribute("serverTime", formattedDate );
 
-        //UsrVO usrVO = mainService.getUsr() ;
-        
-        //model.addAttribute("usr", usrVO );
+        UsrVO usrVO = mainService.getUsr() ;
+        System.out.println("###" + usrVO.getUsr_id());
+        model.addAttribute("usr", usrVO );
        
          
         return "index";
