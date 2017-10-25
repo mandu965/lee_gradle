@@ -26,7 +26,7 @@
           </button>
           <a class="navbar-brand" href="#">Project name</a>
           <a class="navbar-brand" href="#">notice</a>
-          <a class="navbar-brand" href="#">board</a>
+          <a class="navbar-brand" href="#">board s</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <form class="navbar-form navbar-right">
