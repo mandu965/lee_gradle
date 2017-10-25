@@ -14,14 +14,13 @@ import lee.main.service.MainService;
 
 @Controller
 public class MainController {
-	//참고 http://dynaticy.tistory.com/category/Dev%20Story/Gradle 22
+	// http://dynaticy.tistory.com/category/Dev%20Story/Gradle 22
 	// http://stag.tistory.com/22
 	//private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 
 	@Autowired
 	MainService mainService;
 	
-	//*@Controller + @ResponseBody말고 @RestController
  	@RequestMapping(value = "/", method = RequestMethod.GET)
     public String main(Locale locale, Model model) {
         

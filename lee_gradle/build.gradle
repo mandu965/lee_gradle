@@ -1,13 +1,13 @@
 apply plugin: 'java'
-apply plugin: 'eclipse-wtp' // ÀÌÅ¬¸³½º¿¡¼­ ±¸µ¿ÇÏ°í ¹èÆ÷ÇÏ±âÀ§ÇØ ÇÃ·¯±×ÀÎ ¼³Ä¡ÇÕ´Ï´Ù.
+apply plugin: 'eclipse-wtp' // ì´í´ë¦½ìŠ¤ì—ì„œ êµ¬ë™í•˜ê³  ë°°í¬í•˜ê¸°ìœ„í•œ í”ŒëŸ¬ê·¸ì¸
 apply plugin: 'war'
  
-sourceCompatibility = 1.8   // ÀÚ¹Ù ¹öÀüÀÔ´Ï´Ù.
+sourceCompatibility = 1.8   //ìë°”ë²„ì „
 targetCompatibility = 1.8
  
 version = '1.0'
  
-// ¹öÀü°ü¸®
+// Â¹Ã¶Ã€Ã¼Â°Ã¼Â¸Â®
 def version = [
 spring: '4.1.6.RELEASE',
 servletAPI: '3.1.0',
@@ -20,7 +20,7 @@ mybatis : '1.1.1'
 ]
  
 eclipse {
-    // ºôµåÇÏ°í³ª¸é ÇÁ·ÎÁ§Æ®Á¤º¸µµ °°ÀÌ Áö¿öÁö´Âµ¥, GradleÇÁ·ÎÁ§Æ®ÀÓÀ» ÀÎ½Ä½ÃÄÑÁİ´Ï´Ù.
+    //ë¹Œë“œí•˜ê³ ë‚˜ë©´ í”„ë¡œì íŠ¸ ì •ë³´ë„ ê°™ì´ ì§€ì›Œì§€ëŠ”ë° Gradle í”„ë¡œì íŠ¸ì„ì„ ì¸ì‹
     project.natures "org.springsource.ide.eclipse.gradle.core.nature"
     wtp {
         facet {
@@ -36,7 +36,7 @@ jar {
                    'Implementation-Version': version
     }
 }
- //maven Repository »ç¿ë
+ //maven Repository useÃ«
 repositories {
     mavenCentral()
 }
@@ -46,19 +46,17 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: "${version.junit}"
     
     //${version.~} manage
-    //Ãß°¡
+    //Add : S
     providedCompile "javax.servlet:javax.servlet-api:${version.servletAPI}"
     compile "org.springframework:spring-webmvc:${version.spring}"
     compile "org.springframework.boot:spring-boot-starter-web:${version.spring_boot}"
     compile "org.slf4j:slf4j-api:${version.slf4j}"
     
-    //compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '${version.tomcat_embed}'
 	compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '8.5.20'
     
 	compile('javax.servlet:jstl:1.2') /*jsp */
 	
-	
-	// ÀĞ±â http://dynaticy.tistory.com/10
+	// check://dynaticy.tistory.com/10
 	compile "org.mybatis.spring.boot:mybatis-spring-boot-starter:${version.mybatis}" // MyBatis 
 	compile fileTree(dir: '/webapp/WEB-INF/lib', include: ['*.jar'])
 }
