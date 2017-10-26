@@ -1,11 +1,12 @@
-package lee.comm.gradle;
+package lee.comm.conf;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Configuration
-@EnableWebMvc
 public class AppConfig extends WebMvcConfigurerAdapter {
 
    /* @Override
@@ -14,6 +15,16 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
     }*/
    
- 
+	@Autowired
+	private LeeInterceptor leeInterceptor;
+	
+	@Override 
+	public void addInterceptors(InterceptorRegistry registry) 
+	{
+		registry.addInterceptor(leeInterceptor)
+			.addPathPatterns("/**")
+			.excludePathPatterns("/public/**"); 
+	}
+
 }
 

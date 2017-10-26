@@ -12,9 +12,9 @@
 
 <script>
 $(document).ready(function(){
-	$("#singUpBtn").click(function(){
-
-		$("#signForm").attr('action', '/join/usrAdd').submit();
+	$("#mainBtn").click(function(){
+		$(location).attr('href', '/')
+		return false;
 	})
 })
 </script>
@@ -23,7 +23,8 @@ $(document).ready(function(){
 <title>Insert title here</title>
 </head>
 <body>
- 
+ 	<jsp:include page="/WEB-INF/include/top.jsp" flush="true" />
+ <!-- 
 <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -33,12 +34,12 @@ $(document).ready(function(){
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="/">Project name</a>
           <a class="navbar-brand" href="#">notice</a>
           <a class="navbar-brand" href="#">board</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right" id="signForm">
+          <form class="navbar-form navbar-right">
             <div class="form-group">
               <input type="text" placeholder="Email" class="form-control">
             </div>
@@ -48,50 +49,31 @@ $(document).ready(function(){
             <button type="submit" class="btn btn-success">Sign in</button>
             <button class="btn btn-success" id="singUpBtn">Sign up</button>
           </form>
-        </div><!--/.navbar-collapse -->
+        </div>/.navbar-collapse
       </div>
     </nav>
-
+ -->
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-      <div class="container">
-        <h1>Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
-      </div>
-    </div>
-
-    <div class="container">
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-       </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
-      </div>
-
-      <hr>
-
-      <footer>
-        <p>&copy; Company 2014</p>
-      </footer>
-    </div> <!-- /container -->
+    
+<div class="container">
+  	<p class="bg-primary">회원가입이 완료 되었습니다.1</p>
+	<p class="bg-success">회원가입이 완료 되었습니다.2</p>
+	<p class="bg-info">회원가입이 완료 되었습니다.3</p>
+	<p class="bg-warning">회원가입이 완료 되었습니다.4</p>
+	<p class="bg-danger">회원가입이 완료 되었습니다.5</p>
+	
+	<button type="button" class="btn btn-success" id="mainBtn">메인으로 이동</button>
+</div>
 
  <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- 모든 컴파일된 플러그인을 포함합니다 (아래), 원하지 않는다면 필요한 각각의 파일을 포함하세요 -->
     <script src="/resurces/bootstrap/js/bootstrap.min.js"></script>
-    
+     
+<!-- jquery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
 </body>
 </html>

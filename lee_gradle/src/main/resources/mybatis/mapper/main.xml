@@ -10,5 +10,6 @@
 		WHERE
 			usr_id = '1'
 	 </select> 
-	 
+	
+
  </mapper>

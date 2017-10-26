@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lee.join.dao.JoinMapper"> 
+
+	<insert id="addUsr" parameterType="lee.domain.UsrVO" >
+		<selectKey resultType="java.lang.Long"   keyProperty="usr_no"  order="BEFORE">
+			select seq_ck_usr.nextVal from dual
+		</selectKey>
+		insert into ck_usr (
+		usr_no, usr_id, usr_pw, usr_nm, usr_sex, usr_addr, usr_birth, usr_auth_cd,
+		usr_point, reg_date, usr_hp
+
+		) values (
+		#{usr_no}, #{usr_id}, #{usr_pw}, #{usr_nm}, #{usr_sex}, #{usr_addr}, '19900915', '101',
+		0, sysdate, '010-4501-7397'
+		)
+	</insert>
+
+ </mapper>

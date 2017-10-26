@@ -1,4 +1,4 @@
-package lee.comm.gradle;
+package lee.comm.conf;
 
 import javax.servlet.Filter;
 
@@ -30,7 +30,7 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
 	 
 	@Override
 	protected String[] getServletMappings() {
-	    return new String[] { "/" };
+	    return new String[] { "/*.do" };
 	}
 
 }

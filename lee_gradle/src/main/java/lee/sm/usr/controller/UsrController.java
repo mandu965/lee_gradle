@@ -11,14 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class UsrController {
 	@RequestMapping(value = "/sm/usrList", method = RequestMethod.GET)
     public String usrAdd(Locale locale, Model model) {
-        System.out.println("usr Add Form");
-        
-
-        //UsrVO usrVO = mainService.getUsr() ;
-        
-        //model.addAttribute("usr", usrVO );
-       
-         
         return "sm/usr/usrList";
     }
 }
