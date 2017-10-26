@@ -34,11 +34,8 @@ public class LoginController {
 		params.put("pw", pw);
 		idCnt = loginService.checkId(id);
 		if(idCnt!=0) {
-			System.out.println(id + "@@@@@@@@@2");
 			boolean result = loginService.checkPw(params);
-			System.out.println(id + "@@@@@@@@@1");
 			msg = result == true ? "success" : "Your password is incorrect.";
-			System.out.println(id + "@@@@@@@@@" + pw);
 		}else {
 			msg = "Id is not found.";
 		}
