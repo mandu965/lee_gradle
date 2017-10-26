@@ -25,7 +25,7 @@ $(document).ready(function(){
 				alert('요청하신 페이지에 문제가 있어 표시할 수 없습니다.');
 			},
 			success: function(json){
-				alert(json.id);
+				alert(json.msg);
 			}
 		});
 	});
@@ -56,7 +56,7 @@ $(document).ready(function(){
               <input type="text" placeholder="Id" class="form-control" id="id" name="id">
             </div>
             <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control" id="pwd" name="pwd">
+              <input type="password" placeholder="Password" class="form-control" id="pw" name="pw">
             </div>
             <button type="submit" class="btn btn-success" id="singInBtn">Sign in</button>
             <button class="btn btn-success" id="singUpBtn">Sign up</button>
