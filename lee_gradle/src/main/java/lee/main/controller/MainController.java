@@ -33,7 +33,7 @@ public class MainController {
         model.addAttribute("serverTime", formattedDate );
 
         UsrVO usrVO = mainService.getUsr() ;
-        System.out.println("###" + usrVO.getUsr_id());
+        System.out.println("###id=" + usrVO.getUsr_id());
         model.addAttribute("usr", usrVO );
        
          

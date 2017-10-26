@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,7 +54,7 @@ $(document).ready(function(){
     <!-- Main jumbotron for a primary marketing message or call to action -->
     
       <div class="container">
-        <h1>∞≥¿Œ¡§∫∏</h1>
+        <h1>Í∞úÏù∏Ï†ïÎ≥¥</h1>
         
         </div>
     <div class="container">
@@ -94,14 +93,14 @@ $(document).ready(function(){
 
     
 
- <!-- jQuery (∫Œ∆ÆΩ∫∆Æ∑¶¿« ¿⁄πŸΩ∫≈©∏≥∆Æ «√∑Ø±◊¿Œ¿ª ¿ß«ÿ « ø‰«’¥œ¥Ÿ) -->
+ <!-- jQuery (Î∂ÄÌä∏Ïä§Ìä∏Îû©Ïùò ÏûêÎ∞îÏä§ÌÅ¨Î¶ΩÌä∏ ÌîåÎü¨Í∑∏Ïù∏ÏùÑ ÏúÑÌï¥ ÌïÑÏöîÌï©ÎãàÎã§) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <!-- ∏µÁ ƒƒ∆ƒ¿œµ» «√∑Ø±◊¿Œ¿ª ∆˜«‘«’¥œ¥Ÿ (æ∆∑°), ø¯«œ¡ˆ æ ¥¬¥Ÿ∏È « ø‰«— ∞¢∞¢¿« ∆ƒ¿œ¿ª ∆˜«‘«œººø‰ -->
+    <!-- Î™®Îì† Ïª¥ÌååÏùºÎêú ÌîåÎü¨Í∑∏Ïù∏ÏùÑ Ìè¨Ìï®Ìï©ÎãàÎã§ (ÏïÑÎûò), ÏõêÌïòÏßÄ ÏïäÎäîÎã§Î©¥ ÌïÑÏöîÌïú Í∞ÅÍ∞ÅÏùò ÌååÏùºÏùÑ Ìè¨Ìï®ÌïòÏÑ∏Ïöî -->
     <script src="/resurces/bootstrap/js/bootstrap.min.js"></script>
      
 <!-- jquery CDN -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!-- «’√ƒ¡ˆ∞Ì √÷º“»≠µ» √÷Ω≈ ¿⁄πŸΩ∫≈©∏≥∆Æ -->
+<!-- Ìï©Ï≥êÏßÄÍ≥† ÏµúÏÜåÌôîÎêú ÏµúÏã† ÏûêÎ∞îÏä§ÌÅ¨Î¶ΩÌä∏ -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 </body>

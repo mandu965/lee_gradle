@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import lee.login.service.LoginService;
 
 @Controller
@@ -31,12 +32,13 @@ public class LoginController {
 		pw = req.getParameter("pw");
 		params.put("id", id);
 		params.put("pw", pw);
-		
 		idCnt = loginService.checkId(id);
-
 		if(idCnt!=0) {
+			System.out.println(id + "@@@@@@@@@2");
 			boolean result = loginService.checkPw(params);
+			System.out.println(id + "@@@@@@@@@1");
 			msg = result == true ? "success" : "Your password is incorrect.";
+			System.out.println(id + "@@@@@@@@@" + pw);
 		}else {
 			msg = "Id is not found.";
 		}

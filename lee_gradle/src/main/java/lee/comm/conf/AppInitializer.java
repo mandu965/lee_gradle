@@ -1,4 +1,4 @@
-package lee.comm.gradle;
+package lee.comm.conf;
 
 import javax.servlet.Filter;
 
