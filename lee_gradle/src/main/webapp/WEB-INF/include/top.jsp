@@ -79,7 +79,7 @@ $(document).ready(function(){
 	            	<font color="white"><c:out value="${usrSession.usr_id}"/>님 반갑습니다.</font>
 	            	<button class="btn btn-danger" id="logOutBtn">Log Out</button>	
 	            	<c:if test="${usrSession.usr_auth_cd ==  103}">
-	            	<button type="button" class="btn btn-link">시스템 관리</button>
+	            	<a href="/sm/usrmng/usrmngList"><button type="button" class="btn btn-link">시스템 관리</button></a>
 	            	</c:if>
 	            	
 	            </c:otherwise>
