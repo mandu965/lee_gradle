@@ -1,17 +1,18 @@
 package lee.login.controller;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
 import lee.login.service.LoginService;
 
 @Controller
@@ -19,6 +20,11 @@ public class LoginController {
 	
 	@Autowired
 	LoginService loginService;
+	
+	@RequestMapping(value = "/login/login", method = RequestMethod.GET)
+    public String login(Locale locale, Model model ) {
+        return "login/login";
+    }
 	
 	@RequestMapping(value = "/login/loginPro", method = RequestMethod.POST)
     public  @ResponseBody Map<String, String> usrAddPro(HttpServletRequest req) {
