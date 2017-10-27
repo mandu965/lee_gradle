@@ -2,8 +2,6 @@
 <%@include file="/WEB-INF/include/header.jsp" %>
 <head>
 
-<script src="/resurces/lee/js/lee.js"></script>
-
 <script>
 $(document).ready(function(){
 	$("#singUpBtn").click(function(){
