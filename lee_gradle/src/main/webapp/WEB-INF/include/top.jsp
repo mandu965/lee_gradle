@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<%@include file="/WEB-INF/include/header.jsp" %>
 <head>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <script src="/resurces/lee/js/lee.js"></script>
 
 <script>
