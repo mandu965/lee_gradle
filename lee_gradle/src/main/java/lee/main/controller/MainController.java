@@ -25,18 +25,17 @@ public class MainController {
  	@RequestMapping(value = "/", method = RequestMethod.GET)
     public String main(Locale locale, Model model) {
         
-        Date date = new Date();
-        DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+        //Date date = new Date();
+        //DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
          
-        String formattedDate = dateFormat.format(date);
+        //String formattedDate = dateFormat.format(date);
          
-        model.addAttribute("serverTime", formattedDate );
+        //model.addAttribute("serverTime", formattedDate );
 
-        UsrVO usrVO = mainService.getUsr() ;
-        System.out.println("###id=" + usrVO.getUsr_id());
-        model.addAttribute("usr", usrVO );
-       
-         
+        //UsrVO usrVO = mainService.getUsr() ;
+        //System.out.println("###id=" + usrVO.getUsr_id());
+        //model.addAttribute("usr", usrVO );
+
         return "index";
     }
 

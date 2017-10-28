@@ -19,6 +19,16 @@
 		WHERE
 			usr_id = #{id} and
 			usr_pw = #{pw} 
-	 </select> 
+	 </select>
+	 
+	 <select id="getUsr" parameterType="Map" resultType="lee.domain.UsrVO"> 
+		SELECT
+			*
+		FROM
+			ck_usr
+		WHERE
+			usr_id = #{id} and
+			usr_pw = #{pw} 
+	 </select>  
 
  </mapper>

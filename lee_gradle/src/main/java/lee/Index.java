@@ -7,7 +7,6 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @MapperScan(basePackages = {"lee"}) //mpperScan search
-//@ComponentScan({"lee.main, lee.join, lee.login, lee.comm"}) 
 @ComponentScan({"lee.**"})
 public class Index {
 	public static void main(String[] args) {

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lee.sm.usrmng.dao.UsrmngMapper"> 
+
+	<select id="usrmngCount" parameterType="lee.sm.usrmng.service.UsrmngSearchVO" resultType="int"> 
+		SELECT
+			count(*)
+		FROM
+			ck_usr
+	 </select> 
+	 
+	<select id="usrmngList" parameterType="lee.sm.usrmng.service.UsrmngSearchVO" resultType="lee.domain.UsrVO">
+		select
+			r2.usr_id, r2.usr_nm, r2.usr_sex, r2.usr_birth, 
+			r2.usr_addr, r2.usr_hp, r2.usr_auth_cd, r2.reg_date,
+			r2.usr_no
+		from(
+			select
+				usr_no, rownum as rnum
+			from
+			( 
+				SELECT
+					usr_no
+				FROM
+					ck_usr
+				order by reg_date desc
+			)
+		)r1, ck_usr r2
+		where
+		r1.usr_no = r2.usr_no and 
+		rnum between #{startRow} and #{endRow}
+		order by r2.reg_date DESC
+	 </select> 
+	 
+ </mapper>

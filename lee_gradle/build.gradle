@@ -55,10 +55,12 @@ dependencies {
 	compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '8.5.20'
     
 	compile('javax.servlet:jstl:1.2') /*jsp */
-	
+
 	// check://dynaticy.tistory.com/10
 	compile "org.mybatis.spring.boot:mybatis-spring-boot-starter:${version.mybatis}" // MyBatis 
 	compile fileTree(dir: '/webapp/WEB-INF/lib', include: ['*.jar'])
+	
+	compile "org.projectlombok:lombok:1.16.6"
 }
  
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8' // UTF 8 compile

@@ -18,7 +18,7 @@ public class JoinController {
 	@Autowired
 	JoinService joinservice;
 
-	@RequestMapping(value = "/join/usrAdd", method = RequestMethod.POST)
+	@RequestMapping(value = "/join/usrAdd", method = RequestMethod.GET)
     public String usrAdd(Locale locale, Model model ) {
         return "join/usrAdd";
     }
