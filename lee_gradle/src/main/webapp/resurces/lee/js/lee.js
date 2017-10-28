@@ -1,4 +1,5 @@
  // http://blog.alexmaccaw.com/css-transitions
+ 
  $.fn.emptyCheck = function () {
 	  alert(1);
 	  /*var value = obj.val();
@@ -10,6 +11,3 @@
 		}*/
 
   };
-  jQuery.fn.getAnchorValue = function getAnchorValue() {
-		alert(55);
-	};

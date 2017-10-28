@@ -7,5 +7,6 @@
 <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 <link rel="stylesheet" href="/resurces/lee/css/lee.css" >
+<script src="/resurces/lee/js/lee.js" ></script>
 
 

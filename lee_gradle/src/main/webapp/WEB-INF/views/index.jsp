@@ -14,8 +14,7 @@
 // refrence blog?
 //http://zzznara2.tistory.com/category
 $(document).ready(function(){
-
-
+	
 })
 </script>
 

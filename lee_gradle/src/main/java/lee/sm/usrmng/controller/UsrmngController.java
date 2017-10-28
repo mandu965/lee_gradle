@@ -74,4 +74,9 @@ public class UsrmngController {
 			
         return "/sm/usrmng/usrmngList";
     }
+	
+	@RequestMapping(value = "/sm/usrmng/modal/usrForm", method = RequestMethod.GET)
+    public String usrFrom(HttpServletRequest req, ModelMap modelMap, @ModelAttribute("usrmngSearchVO") UsrmngSearchVO usrmngSearchVO) {
+		return "/sm/usrmng/modal/usrForm";
+	}
 }

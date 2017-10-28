@@ -13,7 +13,17 @@
 //http://zzznara2.tistory.com/category
 $(document).ready(function(){
 
+	$(".usrView").click(function(){
+		/* $.load({
+			
+		}); */
+		$.load( "/sm/usrmng/modal/usrForm" );
 
+		return false;
+	});
+		//alert($(this).attr('id'));
+		//$('#myModal').modal();
+			
 })
 </script>
 
@@ -50,7 +60,7 @@ $(document).ready(function(){
           <h2 class="page-header">User Manage</h2>
           <h4>total : ${count}</h4>
           <div class="table-responsive">
-            <table class="table table-striped">
+            <table class="table table-striped"> <!-- table-hover -->
               <thead>
                 <tr>
                   <th>번호</th>
@@ -81,7 +91,18 @@ $(document).ready(function(){
 								<%-- <td><a href="lee/board/boardView.do?blt_rsrc_sno=${vo.blt_rsrc_sno}" class="boardBtnView">${vo.blt_rsrc_tlt}</a></td> --%>
 								<%-- <td><a href="lee/board/boardView.do?blt_rsrc_sno=${vo.blt_rsrc_sno}" class="boardBtnView">${vo.blt_rsrc_tlt}</a></td> --%>
 								
-								<td><c:out value="${vo.usr_nm}"/></td>
+								<td>
+								
+								<%-- <a id="${vo.usr_no}" class="usrView" data-toggle="modal" href="#;" data-target="#modal-testNew" role="button" data-backdrop="static"> --%>
+								<%-- <a id="${vo.usr_no}" class="usrView" data-toggle="modal" href="#;" data-target="#modal-testNew" role="button" data-backdrop="static">	
+								<c:out value="${vo.usr_nm}"/>test
+								</a>
+<br> --%>
+								<a id="${vo.usr_no}" data-toggle="modal" href="/sm/usrmng/modal/usrForm" data-target="#modal-testNew" role="button" data-backdrop="static">	
+								<c:out value="${vo.usr_nm}"/>
+								</a>
+								
+								</td>
 								<td><c:out value="${vo.usr_id}"/></td>
 								<td><c:out value="${vo.usr_hp}"/></td>
 								<td><c:out value="${vo.usr_addr}"/></td>
@@ -124,7 +145,6 @@ $(document).ready(function(){
 				<c:if test="${nowPageGroup < pageGroupCount}">
 					<a href="<c:url value = "/sm/usrmng/usrmngList?pageIndex=${nowPageGroup*pageGroupSize+1}&pageSize=${pageSize}&bbs_sno=${bbs_sno}"/>">[다음]</a>
 				</c:if> --%>
-				
 				<div class="jb-center" >
 			
             <ul class="pagination">
@@ -151,5 +171,28 @@ $(document).ready(function(){
 			<!-- Pageing : E -->
           </div>
         </div> 
+
+<div id="modal-testNew" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="테스트정보 등록" aria-describedby="테스트 모달">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
 </body>
 </html>
+<!-- 
+$('#exampleModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var recipient = button.data('whatever') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  modal.find('.modal-title').text('New message to ' + recipient)
+  modal.find('.modal-body input').val(recipient)
+}) -->

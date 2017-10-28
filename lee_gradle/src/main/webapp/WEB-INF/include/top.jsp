@@ -5,8 +5,8 @@
 <script>
 $(document).ready(function(){
 	$("#singUpBtn").click(function(){
-		$("#signForm").attr('method', 'post');
-		$("#signForm").attr('action', '/join/usrAdd').submit();
+		location.href='/join/usrAdd';
+		return false;
 	});
 	$("#singInBtn").click(function(){
 		$.ajax({
@@ -19,7 +19,7 @@ $(document).ready(function(){
 			},
 			success: function(json){
 				alert(json.msg);
-				if(json.result){
+				if(json.result=='true'){
 					location.reload();	
 				}
 			}
@@ -72,12 +72,13 @@ $(document).ready(function(){
 		            </div>
 	            	<button type="submit" class="btn btn-success" id="singInBtn">Sign in</button>
 	            	<button class="btn btn-info" id="singUpBtn">Sign up</button>
+
 	            </c:when>
 	            <c:otherwise>
 	            	<font color="white"><c:out value="${usrSession.usr_id}"/>님 반갑습니다.</font>
 	            	<button class="btn btn-danger" id="logOutBtn">Log Out</button>	
 	            	<c:if test="${usrSession.usr_auth_cd ==  103}">
-	            	<a href="/sm/usrmng/usrmngList"><button type="button" class="btn btn-link">시스템 관리</button></a>
+	            	<a href="/sm/usrmng/usrmngList" class="btn btn-link">시스템 관리</a>
 	            	</c:if>
 	            	
 	            </c:otherwise>
