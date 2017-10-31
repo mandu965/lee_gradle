@@ -20,12 +20,12 @@ $(document).ready(function(){
 		 $('#modal_div').load('/sm/usrmng/modal/usrForm', {'usr_no' : usr_no}, function (response, status, xhr) {
              if (status === "success") {
                  $(target).modal({ show: true });
+                
              }
          });
 
 		return false;
 	});
-			
 })
 </script>
 
