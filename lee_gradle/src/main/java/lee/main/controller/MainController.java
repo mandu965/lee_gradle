@@ -1,16 +1,14 @@
 package lee.main.controller;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.Locale;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import lee.domain.UsrVO;
 import lee.main.service.MainService;
 
 @Controller
@@ -19,7 +17,7 @@ public class MainController {
 	// http://stag.tistory.com/22
 	//private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 
-	@Autowired
+	@Resource(name="mainservice")
 	MainService mainService;
 	
  	@RequestMapping(value = "/", method = RequestMethod.GET)
