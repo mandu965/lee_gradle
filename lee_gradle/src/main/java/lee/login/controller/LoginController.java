@@ -4,10 +4,10 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,8 +21,8 @@ import lee.login.service.LoginService;
 @Controller
 public class LoginController {
 	
-	@Autowired
-	LoginService loginService;
+	@Resource(name="loginservice")
+	LoginService loginservice;
 	
 	@RequestMapping(value = "/login/login", method = RequestMethod.GET)
     public String login(Locale locale, Model model ) {
@@ -43,17 +43,17 @@ public class LoginController {
 		params.put("id", id);
 		params.put("pw", pw);
 		
-		idCnt = loginService.checkId(id);
+		idCnt = loginservice.checkId(id);
 		
 		if(idCnt!=0) {
-			result = loginService.checkPw(params);
+			result = loginservice.checkPw(params);
 			msg = result == true ? "success" : "Your password is incorrect.";
 		}else {
 			msg = "Id is not found.";
 		}
 		
 		if(result) {
-			UsrVO usrSession = loginService.getUsr(params);
+			UsrVO usrSession = loginservice.getUsr(params);
 			
 			HttpSession session  = req.getSession(true);  
 			session.setAttribute(LeeCode.usrSession, usrSession);  

@@ -14,15 +14,17 @@
 $(document).ready(function(){
 
 	$(".usrView").click(function(){
-		/* $.load({
-			
-		}); */
-		$.load( "/sm/usrmng/modal/usrForm" );
+		var target = $(this).data('target');
+		var usr_no = $(this).attr('id');
+		
+		 $('#modal_div').load('/sm/usrmng/modal/usrForm', {'usr_no' : usr_no}, function (response, status, xhr) {
+             if (status === "success") {
+                 $(target).modal({ show: true });
+             }
+         });
 
 		return false;
 	});
-		//alert($(this).attr('id'));
-		//$('#myModal').modal();
 			
 })
 </script>
@@ -87,18 +89,9 @@ $(document).ready(function(){
 										</c:otherwise>
 	
 									</c:choose></td>
-	
-								<%-- <td><a href="lee/board/boardView.do?blt_rsrc_sno=${vo.blt_rsrc_sno}" class="boardBtnView">${vo.blt_rsrc_tlt}</a></td> --%>
-								<%-- <td><a href="lee/board/boardView.do?blt_rsrc_sno=${vo.blt_rsrc_sno}" class="boardBtnView">${vo.blt_rsrc_tlt}</a></td> --%>
-								
+
 								<td>
-								
-								<%-- <a id="${vo.usr_no}" class="usrView" data-toggle="modal" href="#;" data-target="#modal-testNew" role="button" data-backdrop="static"> --%>
-								<%-- <a id="${vo.usr_no}" class="usrView" data-toggle="modal" href="#;" data-target="#modal-testNew" role="button" data-backdrop="static">	
-								<c:out value="${vo.usr_nm}"/>test
-								</a>
-<br> --%>
-								<a id="${vo.usr_no}" data-toggle="modal" href="/sm/usrmng/modal/usrForm" data-target="#modal-testNew" role="button" data-backdrop="static">	
+								<a id="${vo.usr_no}" class="usrView" data-toggle="modal" href="#;" data-target="#modal-testNew" role="button" data-backdrop="static">	
 								<c:out value="${vo.usr_nm}"/>
 								</a>
 								
@@ -171,18 +164,18 @@ $(document).ready(function(){
 			<!-- Pageing : E -->
           </div>
         </div> 
-
+<!-- 
 <div id="modal-testNew" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="테스트정보 등록" aria-describedby="테스트 모달">
     <div class="modal-dialog">
         <div class="modal-content">
         </div>
     </div>
-</div>
+</div> -->
 
 
 
 
-
+<div id="modal_div"></div>
 
 </body>
 </html>

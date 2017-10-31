@@ -2,7 +2,8 @@ package lee.join.controller;
 
 import java.util.Locale;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,7 +16,7 @@ import lee.join.service.JoinService;
 @Controller
 public class JoinController {
 	
-	@Autowired
+	@Resource(name="joinservice")
 	JoinService joinservice;
 
 	@RequestMapping(value = "/join/usrAdd", method = RequestMethod.GET)

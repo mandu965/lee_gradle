@@ -2,9 +2,9 @@ package lee.sm.usrmng.controller;
 
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,7 +18,9 @@ import lee.sm.usrmng.service.UsrmngSearchVO;
 @Controller
 public class UsrmngController {
 	
-	@Autowired
+	//@Autowired = 타입에 맞춰서 연결
+	//@Resource 이름으로 연결
+	@Resource(name="usrmngService")
 	UsermngService usermngService;
 	
 	@RequestMapping(value = "/sm/usrmng/usrmngList", method = RequestMethod.GET)
@@ -75,8 +77,12 @@ public class UsrmngController {
         return "/sm/usrmng/usrmngList";
     }
 	
-	@RequestMapping(value = "/sm/usrmng/modal/usrForm", method = RequestMethod.GET)
-    public String usrFrom(HttpServletRequest req, ModelMap modelMap, @ModelAttribute("usrmngSearchVO") UsrmngSearchVO usrmngSearchVO) {
+	@RequestMapping(value = "/sm/usrmng/modal/usrForm", method = RequestMethod.POST)
+    public String usrFrom(HttpServletRequest req, ModelMap modelMap) {
+		String usr_no = req.getParameter("usr_no");
+		
+		System.out.println("##usr madal view" + usr_no);
+
 		return "/sm/usrmng/modal/usrForm";
 	}
 }
