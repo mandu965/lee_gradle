@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import lee.comm.util.LeeUtil;
 import lee.domain.UsrVO;
 import lee.sm.usrmng.service.UsermngService;
 import lee.sm.usrmng.service.UsrmngSearchVO;
@@ -81,7 +82,8 @@ public class UsrmngController {
     public String usrFrom(HttpServletRequest req, ModelMap modelMap) {
 		String usr_no = req.getParameter("usr_no");
 		
-		System.out.println("##usr madal view" + usr_no);
+		UsrVO usrVO = usermngService.getUsrInfo(LeeUtil.StringToLong(usr_no));
+		modelMap.put("usrVO", usrVO);
 
 		return "/sm/usrmng/modal/usrForm";
 	}

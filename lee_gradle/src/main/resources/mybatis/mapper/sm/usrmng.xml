@@ -32,4 +32,11 @@
 		order by r2.reg_date DESC
 	 </select> 
 	 
+	 <select id="getUsrInfo" parameterType="long" resultType="lee.domain.UsrVO"> 
+		SELECT
+			*
+		FROM
+			ck_usr
+		where usr_no = #{usr_no}
+	 </select> 
  </mapper>

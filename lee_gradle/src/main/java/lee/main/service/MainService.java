@@ -4,5 +4,5 @@ import lee.domain.UsrVO;
 
 
 public interface MainService {
-	public UsrVO getUsr();
+	UsrVO getUsr();
 }

@@ -22,4 +22,8 @@ public class UsermngServiceImpl implements UsermngService{
 	public List<UsrVO> usrmngList(UsrmngSearchVO usrmngSearchVO){
 		return usrmngMapper.usrmngList(usrmngSearchVO);
 	}
+	
+	public UsrVO getUsrInfo(long usr_no){
+		return usrmngMapper.getUsrInfo(usr_no);
+	}
 }
