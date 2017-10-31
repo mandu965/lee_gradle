@@ -6,6 +6,7 @@ import lee.domain.UsrVO;
 
 
 public interface UsermngService {
-	public int usrmngCount(UsrmngSearchVO usrmngSearchVO);
-	public List<UsrVO> usrmngList(UsrmngSearchVO usrmngSearchVO);
+	int usrmngCount(UsrmngSearchVO usrmngSearchVO);
+	List<UsrVO> usrmngList(UsrmngSearchVO usrmngSearchVO);
+	UsrVO getUsrInfo(long usr_no);
 }

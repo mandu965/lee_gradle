@@ -8,4 +8,5 @@ import lee.sm.usrmng.service.UsrmngSearchVO;
 public interface UsrmngMapper {
 	int usrmngCount(UsrmngSearchVO usrmngSearchVO);
 	List<UsrVO> usrmngList(UsrmngSearchVO usrmngSearchVO);
+	UsrVO getUsrInfo(long usr_no);
 }

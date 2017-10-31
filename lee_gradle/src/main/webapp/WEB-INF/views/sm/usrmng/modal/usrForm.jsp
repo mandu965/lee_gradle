@@ -11,7 +11,7 @@
 	      </div>
 	      
 	      <div class="modal-body">
-	        ...sdfasfasdfasdf8888888888888888
+	        ${usrVO.usr_nm }
 	      </div>
 	      
 	      <div class="modal-footer">

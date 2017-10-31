@@ -4,5 +4,5 @@ import lee.domain.UsrVO;
 
 
 public interface JoinService {
-	public long addUsr(UsrVO usrVO) ;
+	long addUsr(UsrVO usrVO);
 }
