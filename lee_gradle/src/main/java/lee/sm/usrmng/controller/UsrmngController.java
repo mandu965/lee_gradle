@@ -1,15 +1,19 @@
 package lee.sm.usrmng.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import lee.comm.util.LeeUtil;
 import lee.domain.UsrVO;
@@ -74,6 +78,7 @@ public class UsrmngController {
 		modelMap.put("nowPageGroup", nowPageGroup);
 		modelMap.put("pageGroupCount", pageGroupCount);
 		modelMap.put("articleList", usrmngList);
+		modelMap.put("usrmngSearchVO", usrmngSearchVO);
 			
         return "/sm/usrmng/usrmngList";
     }
@@ -87,4 +92,13 @@ public class UsrmngController {
 
 		return "/sm/usrmng/modal/usrForm";
 	}
+	
+	@RequestMapping(value = "/sm/usrmng/usrModPro", method = RequestMethod.POST)
+    public @ResponseBody Map<String, String> usrModPro(@ModelAttribute("usrForm") UsrVO usrVO) {
+    	Map<String, String> params = new HashMap<String, String>();
+		boolean result = usermngService.usrMod(usrVO);
+		params.put("result", result+"");
+		return params;
+	}
+	
 }

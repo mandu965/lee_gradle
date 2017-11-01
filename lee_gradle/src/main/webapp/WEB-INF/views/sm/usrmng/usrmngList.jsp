@@ -7,12 +7,15 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<c:set var="urlPath" value="test" />
+
 <script>
 
 // refrence blog?
 //http://zzznara2.tistory.com/category
 $(document).ready(function(){
-
+	
 	$(".usrView").click(function(){
 		var target = $(this).data('target');
 		var usr_no = $(this).attr('id');
@@ -24,6 +27,12 @@ $(document).ready(function(){
              }
          });
 
+		return false;
+	});
+	
+	$("#usrmngSearchBtn").click(function(){
+		$("#usrmngSearchVO").find("#pageIndex").val(1);
+		$("#usrmngSearchVO").attr('action', '/sm/usrmng/usrmngList').submit();
 		return false;
 	});
 })
@@ -60,6 +69,36 @@ $(document).ready(function(){
 <!-- left : E -->
  	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h2 class="page-header">User Manage</h2>
+          
+          <div class="search_div">
+	          <form class="form-inline" id="usrmngSearchVO" name="usrmngSearchVO">
+	          <input type="hidden" id="pageIndex" name="pageIndex" value="${usrmngSearchVO.pageIndex}"/>
+	          <input type="hidden" id="pageSize" name="pageSize" value="${usrmngSearchVO.pageSize}"/>
+				  <div class="form-group">
+				    <label for="usr_nm">이름</label>
+				    <input type="text" class="form-control" id="usr_nm" name="usr_nm" value="${usrmngSearchVO.usr_nm}"/>
+				  </div>
+				  <div class="form-group">
+				    <label for="usr_id">ID</label>
+				    <input type="text" class="form-control" id="usr_id" name="usr_id" value="${usrmngSearchVO.usr_id}"/>
+				  </div>		
+				  <div class="form-group">
+				    <label for="usr_addr">주소</label>
+				    <input type="text" class="form-control" id="usr_addr" name="usr_addr" value="${usrmngSearchVO.usr_addr}"/>
+				  </div>		
+				  <div class="form-group">
+				    <label for="exampleInputEmail2">권한</label>
+				    <input type="checkbox" class="form-check-input" name="ck_usr_auth" id="usr_auth_cd_ad" value="103">
+				    <label for="usr_auth_cd_ad">관리자</label>
+				    <input type="checkbox" class="form-check-input" name="ck_usr_auth" id="usr_auth_cd_nm" value="101">
+				    <label for="usr_auth_cd_nm">일반</label>
+				  </div>				  		  
+				  	<span class="searchBtn_div">
+				  		<button type="submit" class="btn btn-default" id="usrmngSearchBtn">Search</button>
+				  	</span>
+				</form>
+			</div>
+          
           <h4>total : ${count}</h4>
           <div class="table-responsive">
             <table class="table table-striped"> <!-- table-hover -->
@@ -70,6 +109,7 @@ $(document).ready(function(){
                   <th>ID</th>
                   <th>연락처</th>
                   <th>주소</th>
+                  <th>권한</th>
                   <th>가입일</th>
                 </tr>
               </thead>
@@ -99,9 +139,17 @@ $(document).ready(function(){
 								<td><c:out value="${vo.usr_id}"/></td>
 								<td><c:out value="${vo.usr_hp}"/></td>
 								<td><c:out value="${vo.usr_addr}"/></td>
+								<td>
+									<c:choose>
+										<c:when test="${vo.usr_auth_cd == '103'}">
+											<c:out value="관리자"/>
+										</c:when>
+										<c:otherwise>
+											<c:out value="일반"/>
+										</c:otherwise>
+									</c:choose>
+								</td>
 								<td><c:out value="${vo.reg_date}"/></td>
-								
-								
 							</tr>
 						</c:forEach>
 					</c:when>
@@ -140,52 +188,29 @@ $(document).ready(function(){
 				</c:if> --%>
 				<div class="jb-center" >
 			
-            <ul class="pagination">
-            	<c:if test="${nowPageGroup > 1}">
-					<li><a href="<c:url value = "/sm/usrmng/usrmngList?pageIndex=${(nowPageGroup-2)*pageGroupSize+1 }&pageSize=${pageSize}&bbs_sno=${bbs_sno}"/>"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
-				</c:if>
-				<c:if test="${nowPageGroup == 1}">
-					<!-- <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li> -->
-				</c:if>
-
-				<c:forEach var="i" begin="${startPage}" end="${endPage}">
-					<li <c:if test="${pageIndex == i}"> class="active" </c:if>><a href="<c:url value="/sm/usrmng/usrmngList?pageIndex=${i}&pageSize=${pageSize}&bbs_sno=${bbs_sno}"/>">
-					   ${i}
-					</a></li>
-				</c:forEach>
-              
-             	 <c:if test="${nowPageGroup < pageGroupCount}">
-					<li><a href="<c:url value = "/sm/usrmng/usrmngList?pageIndex=${nowPageGroup*pageGroupSize+1}&pageSize=${pageSize}&bbs_sno=${bbs_sno}"/>"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
-				</c:if>
-            </ul>
-          </div>
+		            <ul class="pagination">
+		            	<c:if test="${nowPageGroup > 1}">
+							<li><a href="<c:url value = "/sm/usrmng/usrmngList?pageIndex=${(nowPageGroup-2)*pageGroupSize+1 }&pageSize=${pageSize}"/>"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+						</c:if>
+						<c:if test="${nowPageGroup == 1}">
+							<!-- <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li> -->
+						</c:if>
+		
+						<c:forEach var="i" begin="${startPage}" end="${endPage}">
+							<li <c:if test="${pageIndex == i}"> class="active" </c:if>><a href="#;" onclick='paging_script(${i},${pageSize},"usrmngSearchVO","/sm/usrmng/usrmngList");'>${i}</a></li>
+						</c:forEach>
+		              
+		             	 <c:if test="${nowPageGroup < pageGroupCount}">
+							<li><a href="<c:url value = "/sm/usrmng/usrmngList?pageIndex=${nowPageGroup*pageGroupSize+1}&pageSize=${pageSize}"/>"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
+						</c:if>
+		            </ul>
+         	 </div>
           
 			</c:if>
 			<!-- Pageing : E -->
           </div>
         </div> 
-<!-- 
-<div id="modal-testNew" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="테스트정보 등록" aria-describedby="테스트 모달">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        </div>
-    </div>
-</div> -->
-
-
-
-
 <div id="modal_div"></div>
 
 </body>
 </html>
-<!-- 
-$('#exampleModal').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget) // Button that triggered the modal
-  var recipient = button.data('whatever') // Extract info from data-* attributes
-  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-  var modal = $(this)
-  modal.find('.modal-title').text('New message to ' + recipient)
-  modal.find('.modal-body input').val(recipient)
-}) -->

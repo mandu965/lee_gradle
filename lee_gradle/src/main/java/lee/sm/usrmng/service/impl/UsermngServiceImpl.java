@@ -26,4 +26,9 @@ public class UsermngServiceImpl implements UsermngService{
 	public UsrVO getUsrInfo(long usr_no){
 		return usrmngMapper.getUsrInfo(usr_no);
 	}
+	
+	public boolean usrMod(UsrVO usrVO) {
+		return usrmngMapper.usrMod(usrVO);
+	}
+	
 }
