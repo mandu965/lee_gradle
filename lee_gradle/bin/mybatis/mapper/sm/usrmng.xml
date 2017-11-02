@@ -18,6 +18,12 @@
 			<if test="usr_addr!=null"> 
 				and usr_addr like '%' || #{usr_addr} || '%'
 			</if>			
+			<if test="ck_usr_auth != '' and ck_usr_auth != null">
+   				 AND usr_auth_cd IN
+			    <foreach item="item" index="index" collection="ck_usr_auth" open="(" separator="," close=")">
+			        #{item}
+			    </foreach>
+			</if>			
 		</where>
 	 </select> 
 	 
@@ -46,6 +52,12 @@
 					<if test="usr_addr!=null"> 
 						and usr_addr like '%' || #{usr_addr} || '%'
 					</if>
+					<if test="ck_usr_auth != '' and ck_usr_auth != null">
+		   				 AND usr_auth_cd IN
+					    <foreach item="item" index="index" collection="ck_usr_auth" open="(" separator="," close=")">
+					        #{item}
+					    </foreach>
+				    </if>
 				</where>
 				order by reg_date desc
 			)

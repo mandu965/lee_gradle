@@ -8,5 +8,6 @@ public class UsrmngSearchVO extends ListPagingVO{
 	private String usr_nm;
 	private String usr_addr;
 	private String usr_id;
+	private String[] ck_usr_auth;
 
 }

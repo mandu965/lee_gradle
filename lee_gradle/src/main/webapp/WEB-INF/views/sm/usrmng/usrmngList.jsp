@@ -15,6 +15,12 @@
 // refrence blog?
 //http://zzznara2.tistory.com/category
 $(document).ready(function(){
+	//체크박스 제어 :S
+	var checkTagName="ck_usr_auth";
+	'<c:forEach items="${usrmngSearchVO.ck_usr_auth}" var="vo" varStatus="idx">'
+		$('input:checkbox[name='+checkTagName+']:input[value=${vo}]').attr("checked", true);
+	'</c:forEach>'
+	//체크박스 제어 :E
 	
 	$(".usrView").click(function(){
 		var target = $(this).data('target');
@@ -23,7 +29,6 @@ $(document).ready(function(){
 		 $('#modal_div').load('/sm/usrmng/modal/usrForm', {'usr_no' : usr_no}, function (response, status, xhr) {
              if (status === "success") {
                  $(target).modal({ show: true });
-                
              }
          });
 
@@ -31,7 +36,7 @@ $(document).ready(function(){
 	});
 	
 	$("#usrmngSearchBtn").click(function(){
-		$("#usrmngSearchVO").find("#pageIndex").val(1);
+		$("#usrmngSearchVO").find("#pageIndex").val(1);		
 		$("#usrmngSearchVO").attr('action', '/sm/usrmng/usrmngList').submit();
 		return false;
 	});
@@ -74,6 +79,7 @@ $(document).ready(function(){
 	          <form class="form-inline" id="usrmngSearchVO" name="usrmngSearchVO">
 	          <input type="hidden" id="pageIndex" name="pageIndex" value="${usrmngSearchVO.pageIndex}"/>
 	          <input type="hidden" id="pageSize" name="pageSize" value="${usrmngSearchVO.pageSize}"/>
+	          
 				  <div class="form-group">
 				    <label for="usr_nm">이름</label>
 				    <input type="text" class="form-control" id="usr_nm" name="usr_nm" value="${usrmngSearchVO.usr_nm}"/>
@@ -92,7 +98,7 @@ $(document).ready(function(){
 				    <label for="usr_auth_cd_ad">관리자</label>
 				    <input type="checkbox" class="form-check-input" name="ck_usr_auth" id="usr_auth_cd_nm" value="101">
 				    <label for="usr_auth_cd_nm">일반</label>
-				  </div>				  		  
+				  </div>				  		 
 				  	<span class="searchBtn_div">
 				  		<button type="submit" class="btn btn-default" id="usrmngSearchBtn">Search</button>
 				  	</span>
