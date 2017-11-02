@@ -11,3 +11,27 @@
 		}*/
 
   };
+
+  
+  $.fn.getCheckStr = function getCheckStr(){
+	  
+	  var checkValStr='';
+		$(this).each(function(index, element){
+			if($(this).is(':checked')){
+				checkValStr += $(this).val()+',';
+			}
+		});
+		if(checkValStr.indexOf(',')!=-1){
+			checkValStr = checkValStr.substr(0, checkValStr.lastIndexOf(','));
+		}
+		return checkValStr;
+  }
+  
+  
+  function paging_script(pageIndex, pageSize, form, url) {
+	  var form_id = '#'+form;
+	  $(form_id).find("#pageIndex").val(pageIndex);
+	  $(form_id).find("#pageSize").val(pageSize);
+	  $(form_id).attr('action', url).submit();
+	  return false;
+  };
