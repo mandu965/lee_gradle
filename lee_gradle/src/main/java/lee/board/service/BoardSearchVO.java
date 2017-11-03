@@ -10,5 +10,6 @@ public class BoardSearchVO extends ListPagingVO{
 	private String usr_id;
 	private String usr_name;
 	private long bbs_sno;
+	private long blt_rsrc_sno;
 
 }

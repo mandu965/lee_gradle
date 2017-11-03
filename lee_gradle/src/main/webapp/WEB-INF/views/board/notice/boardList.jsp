@@ -21,6 +21,14 @@ $(document).ready(function(){
 		$("#boardSearchVO").attr('action', '/board/notice/boardAdd').submit();
 		return false;
 	});
+	
+	$(".boardView").click(function(){
+		var blt_rsrc_sno = $(this).attr('id');
+		$("#boardSearchVO").find("#blt_rsrc_sno").val(blt_rsrc_sno);
+		$("#boardSearchVO").attr('action', '/board/notice/boardView').submit();
+		return false;
+	});
+	
 })
 </script>
 
@@ -42,6 +50,8 @@ $(document).ready(function(){
 	          <input type="hidden" id="pageIndex" name="pageIndex" value="${boardSearchVO.pageIndex}"/>
 	          <input type="hidden" id="pageSize" name="pageSize" value="${boardSearchVO.pageSize}"/>
 	          <input type="hidden" id="bbs_sno" name="bbs_sno" value="${boardSearchVO.bbs_sno}"/>
+	          <input type="hidden" id="blt_rsrc_sno" name="blt_rsrc_sno" value="0"/>
+	          
 	         
 	          <div class="row"> 
 		          <div class="col-xs-2"> 
@@ -90,11 +100,9 @@ $(document).ready(function(){
 								</td>
 
 								<td>
-								<a id="${vo.blt_rsrc_sno}" class="usrView" data-toggle="modal" href="#;" data-target="#modal-testNew" role="button" data-backdrop="static">	
-								<c:out value="${vo.bbs_title}"/>
-								</a>
+								<a id="${vo.blt_rsrc_sno}" class="boardView" data-toggle="modal" href="#;" data-target="#modal-testNew" role="button" data-backdrop="static">	
+								${vo.bbs_title}</a>
 								</td>
-								
 								<td><c:out value="${vo.usr_id}"/></td>
 								<td><c:out value="${vo.bbs_cnt}"/></td>
 								<td><c:out value="${vo.reg_date}"/></td>
@@ -109,9 +117,8 @@ $(document).ready(function(){
 				</c:choose>
               </tbody>
             </table>
-            <div class="pull-right"><a href="#" class="btn btn-primary btn-success boardAddBtn"><span class="glyphicon glyphicon-pencil"></span> Write</a></div>
             </div>
-           
+           	<div class="pull-right"><a href="#" class="btn btn-primary btn-success boardAddBtn"><span class="glyphicon glyphicon-pencil"></span> Write</a></div>
             <!-- Paging : S -->
 			<c:if test="${count > 0}">
 				<c:set var="pageCount" value="${count / pageSize + ( count % pageSize == 0 ? 0 : 1)}" />

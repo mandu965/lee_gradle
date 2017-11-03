@@ -1,6 +1,8 @@
 package lee.board.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import lee.board.service.BoardSearchVO;
 import lee.board.service.BoardService;
@@ -26,10 +30,9 @@ public class BoardController {
 	//부트스트랩 참고
 	//https://bootsnipp.com/?page=11
 	@RequestMapping(value = "/board/**/boardList")
-    public String boardList(HttpServletRequest req, ModelMap modelMap, @ModelAttribute("boardSearch") BoardSearchVO boardSearchVO) {
+    public String boardList(HttpServletRequest req, ModelMap modelMap, @ModelAttribute("boardSearchVO") BoardSearchVO boardSearchVO) {
 		String jspPath =req.getRequestURI();
 		   
-		//String jsp_path =uri.substring(0, uri.lastIndexOf("/")+1);
 		///////paging : S//////////////////////////////
 		
 		int pageSize = boardSearchVO.getPageSize();// 한페이지에 나오는 게시물 개수
@@ -47,6 +50,34 @@ public class BoardController {
 		
 		List<BoardVO> boardList = boardService.boardList(boardSearchVO);
 		
+		
+		if(boardList!=null && boardList.size()>0){
+			//노랑, 주황, 핑크, 연두, 하늘, 남색
+			String mark_color[]={"#fcff00","#ffa700", "#ffa2b4", "#7bffb1", "#85fff8", "#937eff"};
+			int mark_color_index=0;
+			String kwd = boardSearchVO.getTitle();
+			boolean kwd_exist= false;
+			String[] sh_kwdList;
+			if(kwd!=null && kwd.length()>0){
+				kwd_exist = true;	
+			}
+			for(int i=0; i<boardList.size(); i++){
+				if(boardList.get(i).getBbs_title()!=null){
+					if(kwd_exist){
+						sh_kwdList = kwd.split(" ");
+						if(sh_kwdList.length>0){
+							for(int j=0; j<sh_kwdList.length;j++){
+								mark_color_index = j%6;
+								boardList.get(i).setBbs_title(boardList.get(i).getBbs_title().replaceAll(sh_kwdList[j], "<mark style='background:"+mark_color[mark_color_index]+"'>"+sh_kwdList[j]+"</mark>"));
+							}
+						}
+							
+					}
+				}
+			}
+			
+		}
+		
 		modelMap.put("pageIndex", pageIndex);
 		modelMap.put("pageSize", pageSize);
 		modelMap.put("count", count);
@@ -60,16 +91,28 @@ public class BoardController {
     }
 	
 	@RequestMapping(value = "/board/**/boardAdd")
-    public String boardAdd(HttpServletRequest req, ModelMap modelMap, @ModelAttribute("boardSearch") BoardSearchVO boardSearchVO) {
+    public String boardAdd(HttpServletRequest req, ModelMap modelMap, @ModelAttribute("boardSearchVO") BoardSearchVO boardSearchVO) {
 		String jspPath =req.getRequestURI();
-		
+		modelMap.put("boardSearchVO", boardSearchVO);
 		return jspPath;
 	}
 	
-	@RequestMapping(value = "/test/test")
-    public String test(HttpServletRequest req, ModelMap modelMap, @ModelAttribute("boardSearch") BoardSearchVO boardSearchVO) {
-		System.out.println("@@@@");
-		
-		return "test/test";
+	@RequestMapping(value = "/board/**/boardAddPro", method = RequestMethod.POST)
+    public @ResponseBody Map<String, String> boardAddPro(HttpServletRequest req, @ModelAttribute("boardForm") BoardVO boardVO) {
+		System.out.println("#############################");
+		Map<String, String> params = new HashMap<String, String>();
+		long result = 0;
+		result=boardService.boardAdd(req, boardVO);
+		params.put("result", result+"");
+		return params;
+    }
+	
+	@RequestMapping(value = "/board/**/boardView")
+    public String boardView(HttpServletRequest req, ModelMap modelMap, @ModelAttribute("boardSearchVO") BoardSearchVO boardSearchVO) {
+		String jspPath =req.getRequestURI();
+		BoardVO boardVO= boardService.boardView(boardSearchVO);
+		modelMap.put("boardSearchVO", boardSearchVO);
+		modelMap.put("boardVO", boardVO);
+		return jspPath;
 	}
 }

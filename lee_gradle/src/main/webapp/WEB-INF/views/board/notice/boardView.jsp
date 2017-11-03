@@ -77,26 +77,26 @@ $(document).ready(function(){
 
         <form class="form-horizontal"  id="boardForm" name="boardForm" method="post">
         	<input type="hidden" id="bbs_contents" name="bbs_contents" value=""/>
-        	<input type="hidden" id="ntc_yn" name="ntc_yn" value="N"/>
-        	<input type="hidden" id="atch_file_sno" name="atch_file_sno" value="0"/>
-        	<input type="hidden" id="bbs_sno" name="bbs_sno" value="${boardSearchVO.bbs_sno}"/>
+        	<input type="hidden" id="ntc_yn" name="ntc_yn" value="${boardVO.ntc_yn}"/>
+        	<input type="hidden" id="atch_file_sno" name="atch_file_sno" value="${boardVO.bbs_sno}"/>
+        	<input type="hidden" id="bbs_sno" name="bbs_sno" value="${boardVO.bbs_sno}"/>
         	
 		  <div class="form-group">
 		    <label for="inputEmail3" class="col-sm-2 control-label">Title</label>
 		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="bbs_title" name="bbs_title" placeholder="Title">
+		      ${boardVO.bbs_title}
 		    </div>
 		  </div>
 
 		  <div class="form-group">
 		   	<label for="inputPassword3" class="col-sm-2 control-label">contents</label>
 		   	<div class="col-sm-10">
-		   		<div id="summernote"></div>
+		   		${boardVO.bbs_contents}
 		   	</div>
 		  </div>
 		</form>
 
-        <div class="pull-right"><a href="#" class="btn btn-primary btn-success boardAddBtn"><span class="glyphicon glyphicon-pencil"></span> Write</a></div>
+        <div class="pull-right"><a href="#" class="btn btn-primary btn-success boardAddBtn"><span class="glyphicon glyphicon-pencil"></span> Mod</a></div>
         
     </div>
 </body>

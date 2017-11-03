@@ -50,5 +50,27 @@
 		rnum between #{startRow} and #{endRow}
 		order by r2.reg_date DESC
 	 </select> 
+	 
+	 <insert id="boardAdd" parameterType="lee.domain.BoardVO">
+	 	<selectKey resultType="java.lang.Long"   keyProperty="blt_rsrc_sno"  order="BEFORE">
+			select seq_ck_blt_rsrc.nextVal  from dual
+		</selectKey>
+	 	insert into ck_blt_rsrc (
+	 		blt_rsrc_sno, bbs_sno, bbs_title, bbs_contents, reg_usr_no, del_yn, atch_file_sno, ntc_yn, reg_date
+	 	)
+	 	values(
+	 		#{blt_rsrc_sno}, #{bbs_sno}, #{bbs_title}, #{bbs_contents}, #{reg_usr_no}, 'N', #{atch_file_sno}, #{ntc_yn}, sysdate
+	 	)
+	 	
+	 </insert>
+	 
+	 <select id="boardView" parameterType="lee.board.service.BoardSearchVO" resultType="lee.domain.BoardVO">
+	 	select 
+	 		* 
+	 	from ck_blt_rsrc
+	 	where
+	 		blt_rsrc_sno = #{blt_rsrc_sno}
+	 </select>
+	 
 
  </mapper>
