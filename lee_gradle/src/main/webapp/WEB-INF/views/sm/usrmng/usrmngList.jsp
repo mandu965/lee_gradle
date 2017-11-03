@@ -8,8 +8,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<c:set var="urlPath" value="test" />
-
 <script>
 
 // refrence blog?
@@ -20,7 +18,7 @@ $(document).ready(function(){
 	'<c:forEach items="${usrmngSearchVO.ck_usr_auth}" var="vo" varStatus="idx">'
 		$('input:checkbox[name='+checkTagName+']:input[value=${vo}]').attr("checked", true);
 	'</c:forEach>'
-	//체크박스 제어 :E
+	//체크박스 제어 :E 
 	
 	$(".usrView").click(function(){
 		var target = $(this).data('target');
@@ -51,6 +49,7 @@ $(document).ready(function(){
 <jsp:include page="/WEB-INF/include/top.jsp" flush="true" />
 
 <!-- left : S -->
+        
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li class="active"><a href="#">User Manage <span class="sr-only">(current)</span></a></li>
@@ -110,13 +109,13 @@ $(document).ready(function(){
             <table class="table table-striped"> <!-- table-hover -->
               <thead>
                 <tr>
-                  <th>번호</th>
-                  <th>이름</th>
-                  <th>ID</th>
-                  <th>연락처</th>
-                  <th>주소</th>
-                  <th>권한</th>
-                  <th>가입일</th>
+                  <th class="col-xs-1">번호</th>
+                  <th class="col-xs-1">이름</th>
+                  <th class="col-xs-2">ID</th>
+                  <th class="col-xs-2">연락처</th>
+                  <th class="col-xs-3">주소</th>
+                  <th class="col-xs-1">권한</th>
+                  <th class="col-xs-2">가입일</th>
                 </tr>
               </thead>
               <tbody>
@@ -167,7 +166,7 @@ $(document).ready(function(){
 				</c:choose>
               </tbody>
             </table>
-            
+            </div> 
             <!-- Paging : S -->
 			<c:if test="${count > 0}">
 				<c:set var="pageCount" value="${count / pageSize + ( count % pageSize == 0 ? 0 : 1)}" />
@@ -196,8 +195,9 @@ $(document).ready(function(){
 			
 		            <ul class="pagination">
 		            	<c:if test="${nowPageGroup > 1}">
-							<li><a href="<c:url value = "/sm/usrmng/usrmngList?pageIndex=${(nowPageGroup-2)*pageGroupSize+1 }&pageSize=${pageSize}"/>"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+							<li><a href="#;" onclick='paging_script(${(nowPageGroup-2)*pageGroupSize+1 },${pageSize},"usrmngSearchVO","/sm/usrmng/usrmngList");' ><span class="glyphicon glyphicon-chevron-left"></span></a></li>
 						</c:if>
+						
 						<c:if test="${nowPageGroup == 1}">
 							<!-- <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li> -->
 						</c:if>
@@ -207,7 +207,8 @@ $(document).ready(function(){
 						</c:forEach>
 		              
 		             	 <c:if test="${nowPageGroup < pageGroupCount}">
-							<li><a href="<c:url value = "/sm/usrmng/usrmngList?pageIndex=${nowPageGroup*pageGroupSize+1}&pageSize=${pageSize}"/>"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
+		             	 
+							<li><a href="#;" onclick='paging_script(${nowPageGroup*pageGroupSize+1},${pageSize},"usrmngSearchVO","/sm/usrmng/usrmngList");'><span class="glyphicon glyphicon-chevron-right"></span></a></li>
 						</c:if>
 		            </ul>
          	 </div>
@@ -215,7 +216,7 @@ $(document).ready(function(){
 			</c:if>
 			<!-- Pageing : E -->
           </div>
-        </div> 
+        
 <div id="modal_div"></div>
 
 </body>

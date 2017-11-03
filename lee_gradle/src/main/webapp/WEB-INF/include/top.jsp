@@ -57,18 +57,18 @@ $(document).ready(function(){
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="/">Lee Project</a>
-          <a class="navbar-brand" href="#">notice</a>
-          <a class="navbar-brand" href="#">board</a>
+          <a class="navbar-brand" href="/board/notice/boardList?bbs_sno=1">notice</a>
+          <a class="navbar-brand" href="/board/board/boardList">board</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <form class="navbar-form navbar-right" id="signForm">
           	<c:choose>
 	            <c:when test="${empty usrSession }">
 		            <div class="form-group has-success has-feedback" >
-		              <input type="text" placeholder="Id" class="form-control" id="id" name="id">
+		              <input type="text" placeholder="Id" class="form-control" id="id" name="id" value="admin">
 		            </div>
 		            <div class="form-group ">
-		              <input type="password" placeholder="Password" class="form-control" id="pw" name="pw">
+		              <input type="password" placeholder="Password" class="form-control" id="pw" name="pw" value="1">
 		            </div>
 	            	<button type="submit" class="btn btn-success" id="singInBtn">Sign in</button>
 	            	<button class="btn btn-info" id="singUpBtn">Sign up</button>

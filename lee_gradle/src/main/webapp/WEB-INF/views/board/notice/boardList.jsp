@@ -9,10 +9,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script>
+
 $(document).ready(function(){
-	$("#singUpBtn").click(function(){
-		alert(12);
-	})
+	$("#searchBtn").click(function(){
+		$("#boardSearchVO").find("#pageIndex").val(1);		
+		$("#boardSearchVO").attr('action', '/board/notice/boardList').submit();
+		return false;
+	});
+	
+	$('.boardAddBtn').click(function(){
+		$("#boardSearchVO").attr('action', '/board/notice/boardAdd').submit();
+		return false;
+	});
+	
+	$(".boardView").click(function(){
+		var blt_rsrc_sno = $(this).attr('id');
+		$("#boardSearchVO").find("#blt_rsrc_sno").val(blt_rsrc_sno);
+		$("#boardSearchVO").attr('action', '/board/notice/boardView').submit();
+		return false;
+	});
+	
 })
 </script>
 
@@ -21,73 +37,125 @@ $(document).ready(function(){
 </head>
 <body>
  
-<nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/">Project name</a>
-          <a class="navbar-brand" href="#">notice</a>
-          <a class="navbar-brand" href="#">board</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right">
-            <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
-            </div>
-            <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
-            <button class="btn btn-success" id="singUpBtn">Sign up</button>
-          </form>
-        </div><!--/.navbar-collapse -->
-      </div>
-    </nav>
+<jsp:include page="/WEB-INF/include/top.jsp" flush="true" />
 
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    
-      <div class="container">
-        <h1>개인정보</h1>
+
+
+	<div class="board_div">
+
+          <h2 class="page-header">Notice</h2>
+          
+          <div class="search_div">
+	          <form class="form" id="boardSearchVO" name="boardSearchVO">
+	          <input type="hidden" id="pageIndex" name="pageIndex" value="${boardSearchVO.pageIndex}"/>
+	          <input type="hidden" id="pageSize" name="pageSize" value="${boardSearchVO.pageSize}"/>
+	          <input type="hidden" id="bbs_sno" name="bbs_sno" value="${boardSearchVO.bbs_sno}"/>
+	          <input type="hidden" id="blt_rsrc_sno" name="blt_rsrc_sno" value="0"/>
+	          
+	         
+	          <div class="row"> 
+		          <div class="col-xs-2"> 
+		          		<!-- <label for="usr_id">글쓴이(ID)</label> -->
+					    <input type="text" class="form-control" id="usr_id" name="usr_id" value="${boardSearchVO.usr_id}" placeholder="input writer..."/>
+		          </div> 
+		          <div class="col-xs-4"> 
+		          		<!-- <label for="title">제목</label> -->
+					    <input type="text" class="form-control" id="title" name="title" value="${boardSearchVO.title}" placeholder="input title..."/>  
+		          </div> 
+				  <button type="submit" class="btn btn-default" id="searchBtn">Search</button> 
+	          </div>
+	          </form>
+			</div>
         
-        </div>
-    <div class="container">
-	<h2>.table-hover</h2>
-	<table class="table table-hover">
-	  <thead>
-	    <tr>
-	      <th>#</th>
-	      <th>First Name</th>
-	      <th>Last Name</th>
-	      <th>Username</th>
-	    </tr>
-	  </thead>
-	  <tbody>
-	    <tr>
-	      <td>1</td>
-	      <td>Mark</td>
-	      <td>Otto</td>
-	      <td>@mdo</td>
-	    </tr>
-	    <tr>
-	      <td>2</td>
-	      <td>Jacob</td>
-	      <td>Thornton</td>
-	      <td>@fat</td>
-	    </tr>
-	    <tr>
-	      <td>3</td>
-	      <td>Larry</td>
-	      <td>the Bird</td>
-	      <td>@twitter</td>
-	    </tr>
-	  </tbody>
-	</table>
-</div>
+          
+          <h4>total : ${count}</h4>
+          
+          <div class="table-responsive">
+            <table class="table table-striped"> <!-- table-hover -->
+              <thead>
+                <tr>
+                  <th class="col-xs-1">번호</th>
+                  <th class="col-xs-6">제목</th>
+                  <th class="col-xs-2">글쓴이(ID)</th>
+                  <th class="col-xs-1">조회수</th>
+                  <th class="col-xs-2">등록일</th>
+                </tr>
+              </thead>
+              <tbody>
+               <c:choose>
+					<c:when test="${not empty articleList}">
+						<c:forEach items="${articleList}" var="vo" varStatus="idx">
+	
+							<tr class="${idx.count % 2 == 1 ? 'trOdd' : 'trEven'}">
+								<td><c:choose>
+										<c:when test="${count > pageSize}"> <!-- ex) count= 11, pageSize=10 -->
+											<c:out
+												value="${count - pageSize*(pageIndex-1) - idx.count +1}" /> <!-- 11,10,9,8.......... -->
+										</c:when>
+										<c:otherwise>
+											<c:out value="${count  - idx.count +1}" />
+										</c:otherwise>
+	
+									</c:choose>
+								</td>
+
+								<td>
+								<a id="${vo.blt_rsrc_sno}" class="boardView" data-toggle="modal" href="#;" data-target="#modal-testNew" role="button" data-backdrop="static">	
+								${vo.bbs_title}</a>
+								</td>
+								<td><c:out value="${vo.usr_id}"/></td>
+								<td><c:out value="${vo.bbs_cnt}"/></td>
+								<td><c:out value="${vo.reg_date}"/></td>
+							</tr>
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
+						<tr>
+							<td colspan="7">조회된 자료가 없습니다.</td>
+						</tr>
+					</c:otherwise>
+				</c:choose>
+              </tbody>
+            </table>
+            </div>
+           	<div class="pull-right"><a href="#" class="btn btn-primary btn-success boardAddBtn"><span class="glyphicon glyphicon-pencil"></span> Write</a></div>
+            <!-- Paging : S -->
+			<c:if test="${count > 0}">
+				<c:set var="pageCount" value="${count / pageSize + ( count % pageSize == 0 ? 0 : 1)}" />
+				<c:set var="startPage" value="${pageGroupSize*(nowPageGroup-1)+1}" />
+				<c:set var="endPage" value="${startPage + pageGroupSize-1}" />
+				
+				<c:if test="${endPage > pageCount}">
+					<c:set var="endPage" value="${pageCount}" />
+				</c:if>
+
+				<div class="jb-center" >
+			
+		            <ul class="pagination">
+		            	<c:if test="${nowPageGroup > 1}">
+							<li><a href="#;" onclick='paging_script(${(nowPageGroup-2)*pageGroupSize+1 },${pageSize},"boardSearchVO","/board/notice/boardList");' ><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+						</c:if>
+						
+						<c:if test="${nowPageGroup == 1}">
+							<!-- <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li> -->
+						</c:if>
+		
+						<c:forEach var="i" begin="${startPage}" end="${endPage}">
+							<li <c:if test="${pageIndex == i}"> class="active" </c:if>><a href="#;" onclick='paging_script(${i},${pageSize},"boardSearchVO","/board/notice/boardList");'>${i}</a></li>
+						</c:forEach>
+		              
+		             	 <c:if test="${nowPageGroup < pageGroupCount}">
+		             	 
+							<li><a href="#;" onclick='paging_script(${nowPageGroup*pageGroupSize+1},${pageSize},"boardSearchVO","/board/notice/boardList");'><span class="glyphicon glyphicon-chevron-right"></span></a></li>
+						</c:if>
+		            </ul>
+         	 </div>
+          
+			</c:if>
+			<!-- Pageing : E -->
+          </div>
+        <!-- </div> --> 
+
 
 </body>
 </html>

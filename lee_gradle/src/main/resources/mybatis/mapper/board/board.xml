@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lee.board.dao.BoardMapper"> 
+
+	<select id="boardCount" parameterType="lee.board.service.BoardSearchVO" resultType="int"> 
+		SELECT
+			count(*)
+		FROM
+			ck_blt_rsrc
+		<where>
+		1=1
+			<if test="usr_id!=null"> 
+				and (select usr_id from ck_usr where usr_no=reg_usr_no) like '%' || #{usr_id} || '%'
+			</if>
+			<if test="title!=null"> 
+				and bbs_title like '%' || #{title} || '%'
+			</if>		
+		</where>
+	 </select> 
+	 
+	<select id="boardList" parameterType="lee.board.service.BoardSearchVO" resultType="lee.domain.BoardVO">
+		select
+			r1.blt_rsrc_sno,bbs_title,bbs_contents,reg_usr_no,FUN_GETUSRNAME(reg_usr_no) as usr_nm,
+		    bbs_cnt,atch_file_sno,ntc_yn,to_char(reg_date, 'YYYY-MM-DD') as reg_date,
+			(select usr_id from ck_usr where usr_no=reg_usr_no) as usr_id
+		from(
+			select
+			 /*+ opt_param('_optimizer_cost_based_transformation', 'off') */
+				blt_rsrc_sno, rownum as rnum
+			from
+			( 
+				SELECT
+					blt_rsrc_sno
+				FROM
+					ck_blt_rsrc
+				<where>
+				1=1
+					<if test="usr_id!=null"> 
+						and (select usr_id from ck_usr where usr_no=reg_usr_no) like '%' || #{usr_id} || '%'
+					</if>
+					<if test="title!=null"> 
+						and bbs_title like '%' || #{title} || '%'
+					</if>		
+				</where>
+				order by reg_date desc
+			)
+		)r1, ck_blt_rsrc r2
+		where
+		r1.blt_rsrc_sno = r2.blt_rsrc_sno and 
+		rnum between #{startRow} and #{endRow}
+		order by r2.reg_date DESC
+	 </select> 
+	 
+	 <insert id="boardAdd" parameterType="lee.domain.BoardVO">
+	 	<selectKey resultType="java.lang.Long"   keyProperty="blt_rsrc_sno"  order="BEFORE">
+			select seq_ck_blt_rsrc.nextVal  from dual
+		</selectKey>
+	 	insert into ck_blt_rsrc (
+	 		blt_rsrc_sno, bbs_sno, bbs_title, bbs_contents, reg_usr_no, del_yn, atch_file_sno, ntc_yn, reg_date
+	 	)
+	 	values(
+	 		#{blt_rsrc_sno}, #{bbs_sno}, #{bbs_title}, #{bbs_contents}, #{reg_usr_no}, 'N', #{atch_file_sno}, #{ntc_yn}, sysdate
+	 	)
+	 	
+	 </insert>
+	 
+	 <select id="boardView" parameterType="lee.board.service.BoardSearchVO" resultType="lee.domain.BoardVO">
+	 	select 
+	 		* 
+	 	from ck_blt_rsrc
+	 	where
+	 		blt_rsrc_sno = #{blt_rsrc_sno}
+	 </select>
+	 
+
+ </mapper>
