@@ -31,7 +31,7 @@ public class UsrmngController {
 	@RequestMapping(value = "/sm/usrmng/usrmngList", method = RequestMethod.GET)
     public String usrmngList(HttpServletRequest req, ModelMap modelMap, @ModelAttribute("usrmngSearchVO") UsrmngSearchVO usrmngSearchVO) {
 		String uri =req.getRequestURI();
-	///////paging : S//////////////////////////////
+		///////paging : S//////////////////////////////
 		
 		int pageSize = usrmngSearchVO.getPageSize();// 한페이지에 나오는 게시물 개수
 		int pageIndex = usrmngSearchVO.getPageIndex(); //현재 선택한 페이지 number
