@@ -17,12 +17,19 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 	@Autowired
 	private LeeInterceptor leeInterceptor;
 	
+	@Autowired
+	private AdminInterceptor adminInterceptor;
+	
 	@Override 
 	public void addInterceptors(InterceptorRegistry registry) 
 	{
 		registry.addInterceptor(leeInterceptor)
 			.addPathPatterns("/**")
-			.excludePathPatterns("/public/**"); 
+			.excludePathPatterns("/sm/**");
+		
+		registry.addInterceptor(adminInterceptor)
+		.addPathPatterns("/sm/**")
+		.excludePathPatterns("/public/**"); 
 	}
 
 }

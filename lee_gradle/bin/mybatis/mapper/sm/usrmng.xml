@@ -75,7 +75,6 @@
 			ck_usr
 		where usr_no = #{usr_no}
 	 </select> 
-	 
 	 <update id="usrMod" parameterType="lee.domain.UsrVO" > 
 		update ck_usr set
 			usr_sex = #{usr_sex},
@@ -84,6 +83,4 @@
 			usr_auth_cd = #{usr_auth_cd}
 		where usr_no = #{usr_no}
 	 </update> 
-	 
-	 
  </mapper>
