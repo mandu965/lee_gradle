@@ -1,5 +1,7 @@
 package lee.board.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,16 +9,22 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import lee.board.service.BoardSearchVO;
 import lee.board.service.BoardService;
+import lee.comm.util.LoginManager;
 import lee.domain.BoardVO;
+import lee.domain.CmntVO;
 
 @Controller
 public class BoardController {
@@ -98,11 +106,27 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/board/**/boardAddPro", method = RequestMethod.POST)
-    public @ResponseBody Map<String, String> boardAddPro(HttpServletRequest req, @ModelAttribute("boardForm") BoardVO boardVO) {
-		System.out.println("#############################");
+    public @ResponseBody Map<String, String> boardAddPro(HttpServletRequest req, @ModelAttribute("boardForm") BoardVO boardVO, @RequestPart MultipartFile files) {
 		Map<String, String> params = new HashMap<String, String>();
 		long result = 0;
-		result=boardService.boardAdd(req, boardVO);
+		//result=boardService.boardAdd(req, boardVO);
+		  String sourceFileName = files.getOriginalFilename(); 
+	        String sourceFileNameExtension = FilenameUtils.getExtension(sourceFileName).toLowerCase(); 
+	        File destinationFile; 
+	        String destinationFileName;
+	        String fileUrl = "C:\\Users\\leejh\\Desktop\\file";
+	        do { 
+	            destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + sourceFileNameExtension; 
+	            destinationFile = new File(fileUrl + destinationFileName); 
+	        } while (destinationFile.exists()); 
+	        
+	        destinationFile.getParentFile().mkdirs(); 
+	        try {
+				files.transferTo(destinationFile);
+			} catch (IllegalStateException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
 		params.put("result", result+"");
 		return params;
     }
@@ -115,4 +139,70 @@ public class BoardController {
 		modelMap.put("boardVO", boardVO);
 		return jspPath;
 	}
+	
+
+	/** 코멘트 목록 */
+	@RequestMapping(value="/comm/cmnt/cmntList", method= RequestMethod.POST) 
+	public String cmntList(HttpServletRequest req,@ModelAttribute("cmntVO")CmntVO cmntVO ,ModelMap modelMap) throws Exception{
+		String blt_rsrc_sno = req.getParameter("blt_rsrc_sno");
+		String cmnt_contents = req.getParameter("cmnt_cntn");
+		String gubun = req.getParameter("gubun");
+		boolean addResult = false;
+		cmntVO.setBlt_rsrc_sno(Long.parseLong(blt_rsrc_sno));
+		
+		if(cmnt_contents!=null && cmnt_contents.length()!=0 && gubun.equals("Add")){
+			cmntVO.setCmnt_contents(cmnt_contents);
+			cmntVO.setReg_usr_no(LoginManager.getUsrNo(req));
+			long cmnt_sno=boardService.cmntAdd(cmntVO);
+			if(cmnt_sno!=0)addResult=true;
+		}
+
+		List<CmntVO> cmntList=boardService.cmntList(cmntVO);
+		
+		modelMap.put("cmntList", cmntList);
+		modelMap.put("loginUsrNo", LoginManager.getUsrNo(req));
+		modelMap.put("addResult", addResult);
+		
+		return "comm/cmnt/cmntList";
+	}
+	
+	/** 코멘트 수정화면 */
+	@RequestMapping(value="/comm/cmnt/cmntMod", method= RequestMethod.POST) 
+	public String cmntMod(HttpServletRequest req,@ModelAttribute("cmntVO")CmntVO cmntVO ,ModelMap modelMap) throws Exception{
+		String cmnt_sno = req.getParameter("cmnt_sno");
+		cmntVO = boardService.cmntView(Long.parseLong(cmnt_sno));
+		modelMap.put("cmntVO", cmntVO);
+		
+		return "comm/cmnt/cmntMod";
+	}
+	
+	/** 코멘트 수정 프로세스 */
+	@RequestMapping(value="/comm/cmnt/cmntModPro", method= RequestMethod.POST) 
+	public @ResponseBody Map<String, String> cmntModPro(HttpServletRequest req,@ModelAttribute("cmntVO")CmntVO cmntVO ,ModelMap modelMap) throws Exception{
+		Map<String, String> params = new HashMap<String, String>();
+		boolean result= boardService.cmntMod(cmntVO);
+		params.put("result", result+"");
+		return params;
+	}
+	
+	/** 코멘트 삭제화면 */
+	@RequestMapping(value="/comm/cmnt/cmntDel", method= RequestMethod.POST) 
+	public String cmntDel(HttpServletRequest req,@ModelAttribute("cmntVO")CmntVO cmntVO ,ModelMap modelMap) throws Exception{
+		String cmnt_sno = req.getParameter("cmnt_sno");
+		
+		modelMap.put("cmnt_sno", cmnt_sno);
+		
+		return "comm/cmnt/cmntDel";
+	}
+	
+	/** 코멘트 삭제 */
+	@RequestMapping(value="/comm/cmnt/cmntDelPro", method= RequestMethod.POST) 
+	public @ResponseBody Map<String, String> cmntDelPro(HttpServletRequest req,@ModelAttribute("cmntVO")CmntVO cmntVO ,ModelMap modelMap) throws Exception{
+		
+		Map<String, String> params = new HashMap<String, String>();
+		boolean result = boardService.cmntDel(cmntVO.getCmnt_sno());
+		params.put("result", result+"");
+		return params;
+	}
+	
 }

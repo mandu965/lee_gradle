@@ -8,27 +8,16 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!--fileUpload, drag_drop :S -->
-<link rel="stylesheet" href="/resurces/fileUpload/drag_drop/css/drag_drop.css" >
-<script src="/resurces/fileUpload/drag_drop/js/drag_drop.js"></script>
-<!--fileUpload, drag_drop :E -->
-
-
 <script>
 
 $(document).ready(function(){
-	
 	 $('#summernote').summernote({
 	        placeholder: 'Write contents',
 	        height: 400,
 	        minHeight: null,             // set minimum height of editor
 	        maxHeight: null,             // set maximum height of editor
 	      });
-	 ////////////////////////////////////////////////////////////
-	dropFileInit($("#fileUpload"));
-	
-	////////////////////////////////////////////////////////////
-
+	 
 	$("#searchBtn").click(function(){
 		$("#boardSearchVO").find("#pageIndex").val(1);		
 		$("#boardSearchVO").attr('action', '/board/notice/boardList').submit();
@@ -63,11 +52,7 @@ $(document).ready(function(){
 		
 		return false;
 	});
-	
-	
 })
-
-
 </script>
 
 
@@ -90,7 +75,7 @@ $(document).ready(function(){
 			<input type="hidden" id="title" name="title" value="${boardSearchVO.title}"/>
         </form>
 
-        <form class="form-horizontal"  id="boardForm" name="boardForm" method="post" enctype="multipart/form-data">
+        <form class="form-horizontal"  id="boardForm" name="boardForm" method="post">
         	<input type="hidden" id="bbs_contents" name="bbs_contents" value=""/>
         	<input type="hidden" id="ntc_yn" name="ntc_yn" value="N"/>
         	<input type="hidden" id="atch_file_sno" name="atch_file_sno" value="0"/>
@@ -109,20 +94,9 @@ $(document).ready(function(){
 		   		<div id="summernote"></div>
 		   	</div>
 		  </div>
-		  
-		  <div class="form-group">
-		    <label for="inputEmail3" class="col-sm-2 control-label">첨부파일</label>
-		    <div class="col-sm-10">
-		      <div id="fileUpload" class="dragAndDropDiv">Drag & Drop Files Here</div>
-		    </div>
-		  </div>
-		  
-
-
 		</form>
 		
-
-
+		첨부파일 
 		
         <div class="pull-right"><a href="#" class="btn btn-primary btn-success boardAddBtn"><span class="glyphicon glyphicon-pencil"></span> Write</a></div>
         

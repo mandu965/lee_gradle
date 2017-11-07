@@ -28,7 +28,7 @@ $(document).ready(function(){
 </script>
 
 
-<title>Insert title here</title>
+<title>Lee's library</title>
 </head>
 <body>
  

@@ -72,5 +72,60 @@
 	 		blt_rsrc_sno = #{blt_rsrc_sno}
 	 </select>
 	 
+	 <select id="cmntList" parameterType="lee.domain.CmntVO" resultType="lee.domain.CmntVO">
+		select
+			cmnt_sno, cmnt_contents, blt_rsrc_sno, to_char(reg_date, 'yyyy-mm-dd hh24:mi') as reg_date, 
+			reg_usr_no, 
+			(select usr_id from ck_usr where usr_no=reg_usr_no) as usr_id
+			<!-- fun_getUsrName(reg_usr_no) as usr_nm -->
+		from
+			ck_cmnt
+		where
+			blt_rsrc_sno = #{blt_rsrc_sno} and
+			del_yn='N'
+		order by cmnt_sno desc
+	</select>
+	
+	<select id="cmntView" parameterType="long" resultType="lee.domain.CmntVO">
+	select
+		cmnt_sno, cmnt_contents, del_yn, reg_date, reg_usr_no, blt_rsrc_sno
+	from
+		ck_cmnt
+	where
+		cmnt_sno = #{value} and
+		del_yn='N'
+	
+	
+	</select>
+	
+	<insert id="cmntAdd" parameterType="lee.domain.CmntVO">
+		<selectKey resultType="java.lang.Long"   keyProperty="cmnt_sno"  order="BEFORE">
+			select  seq_ck_cmnt.nextval from dual
+		</selectKey>
+		insert into ck_cmnt (
+			cmnt_sno, cmnt_contents, del_yn, reg_date, reg_usr_no, blt_rsrc_sno
+		) values (
+			#{cmnt_sno}, #{cmnt_contents}, 'N', sysdate, #{reg_usr_no}, #{blt_rsrc_sno}
+		)
+	</insert>
+	
+	<update id="cmntDel" parameterType="long">
+		update
+			ck_cmnt
+		set
+			del_yn='Y'
+		where
+			cmnt_sno = #{cmnt_sno}
+	</update>
+	
+	<update id="cmntMod" parameterType="lee.domain.CmntVO">
+		update
+			ck_cmnt
+		set
+			cmnt_contents=#{cmnt_contents}, reg_date=sysdate
+		where
+			cmnt_sno = #{cmnt_sno}
+	</update>
+	
 
  </mapper>

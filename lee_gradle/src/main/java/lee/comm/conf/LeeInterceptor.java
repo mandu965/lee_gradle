@@ -27,9 +27,9 @@ public class LeeInterceptor extends HandlerInterceptorAdapter{
         if (usrVO == null) {  
             //response.sendRedirect(request.getContextPath()+"/member/login.jsp");  
             //return false;             
-        	System.out.println("세션 미존재");
+        	//System.out.println("세션 미존재");
         }else {
-        	System.out.println("세션 id==" + usrVO.getUsr_id());
+        	//System.out.println("세션 id==" + usrVO.getUsr_id());
         }
 		return true;
 	} 

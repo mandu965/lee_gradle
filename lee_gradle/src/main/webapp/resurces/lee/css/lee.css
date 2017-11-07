@@ -9,7 +9,7 @@
       
 .search_div{
 	border: 1px solid #cccccc;
-	background-color: #dbeef5;	
+	background-color: #efefef;	
 	padding:10px 5px 0 5px;
 	margin-bottom:30px;
 }
@@ -21,6 +21,21 @@
 
 .board_div{
 	padding:0px 20px 0px 20px;
+	/* width:80%; */
+	margin :0 auto;
+}
+
+.comment_form{
+	margin :0 auto;
+}
+
+dt.writeinfo  {font-size:12px; color:#9b9b9b; }
+dd.contents{border-bottom:2px dotted #E7E7E7;}
+
+pre.cmntContent{
+	border: 0px;
+	background-color:white;
+	font-size:14px; 
 }
 
 /*

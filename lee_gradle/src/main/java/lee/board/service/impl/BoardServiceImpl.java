@@ -11,7 +11,9 @@ import org.springframework.stereotype.Service;
 import lee.board.dao.BoardMapper;
 import lee.board.service.BoardSearchVO;
 import lee.board.service.BoardService;
+import lee.comm.util.LoginManager;
 import lee.domain.BoardVO;
+import lee.domain.CmntVO;
 import lee.domain.UsrVO;
 
 @Service("boardServiceImpl")
@@ -28,26 +30,32 @@ public class BoardServiceImpl implements BoardService{
 	}
 	
 	public long boardAdd(HttpServletRequest req, BoardVO boardVO) {
-		
-		System.out.println("@@@" + boardVO.getBbs_title());
-		System.out.println("@@@" + boardVO.getBbs_contents());
-		
-		HttpSession session  = req.getSession(false);  
-		UsrVO usrVO = null;
-		try {
-			usrVO = (UsrVO)session.getAttribute("usrSession");
-			boardVO.setReg_usr_no(usrVO.getUsr_no());
-		}catch (NullPointerException e) {
-			boardVO.setReg_usr_no(0);
-		}
-		
+		boardVO.setReg_usr_no(LoginManager.getUsrNo(req));
 		long inertRowCnt =boardMapper.boardAdd(boardVO); 
 		return inertRowCnt == 0 ? 0 : boardVO.getBlt_rsrc_sno();
-		
-		//return boardMapper.boardAdd(boardVO);
 	}
 	
 	public BoardVO boardView(BoardSearchVO boardSearchVO) {
 		return boardMapper.boardView(boardSearchVO);
+	}
+	
+	public long cmntAdd(CmntVO cmntVO) {
+		return boardMapper.cmntAdd(cmntVO);
+	}
+	
+	public List<CmntVO> cmntList(CmntVO cmntVO){
+		return boardMapper.cmntList(cmntVO);
+	}
+	
+	public CmntVO cmntView(long cmnt_sno) {
+		return boardMapper.cmntView(cmnt_sno);
+	}
+	
+	public boolean cmntMod(CmntVO cmntVO) {
+		return boardMapper.cmntMod(cmntVO);
+	}
+	
+	public boolean cmntDel(long cmnt_sno) {
+		return boardMapper.cmntDel(cmnt_sno);
 	}
 }

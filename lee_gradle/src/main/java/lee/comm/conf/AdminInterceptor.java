@@ -24,13 +24,13 @@ public class AdminInterceptor extends HandlerInterceptorAdapter{
 		if(session!=null)usrVO = (UsrVO)session.getAttribute("usrSession");
 		   
         if (usrVO == null) {  
-            response.sendRedirect(request.getContextPath()+"/");  
+            response.sendRedirect(request.getContextPath()+"/error/adminCheck");  
             return false;             
         }else {
         	System.out.println("세션 id==" + usrVO.getUsr_id());
         	String usr_auth_cd = usrVO.getUsr_auth_cd();
         	if(!usr_auth_cd.equals("103")){
-        		response.sendRedirect(request.getContextPath()+"/");  
+        		response.sendRedirect(request.getContextPath()+"/error/adminCheck");  
                 return false;	
         	}
         }

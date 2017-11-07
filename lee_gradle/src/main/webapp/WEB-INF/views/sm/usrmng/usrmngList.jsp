@@ -24,6 +24,7 @@ $(document).ready(function(){
 		var target = $(this).data('target');
 		var usr_no = $(this).attr('id');
 		
+		$('<div id="modal_div"></div>').appendTo('body');
 		 $('#modal_div').load('/sm/usrmng/modal/usrForm', {'usr_no' : usr_no}, function (response, status, xhr) {
              if (status === "success") {
                  $(target).modal({ show: true });
@@ -42,7 +43,7 @@ $(document).ready(function(){
 </script>
 
 
-<title>Insert title here</title>
+<title>Lee's library</title>
 </head>
 <body>
  
@@ -216,8 +217,5 @@ $(document).ready(function(){
 			</c:if>
 			<!-- Pageing : E -->
           </div>
-        
-<div id="modal_div"></div>
-
 </body>
 </html>

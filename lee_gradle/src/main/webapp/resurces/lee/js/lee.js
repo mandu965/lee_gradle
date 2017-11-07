@@ -11,7 +11,6 @@
 		}*/
 
   };
-
   
   $.fn.getCheckStr = function getCheckStr(){
 	  
@@ -26,8 +25,7 @@
 		}
 		return checkValStr;
   }
-  
-  
+
   function paging_script(pageIndex, pageSize, form, url) {
 	  var form_id = '#'+form;
 	  $(form_id).find("#pageIndex").val(pageIndex);
@@ -35,3 +33,5 @@
 	  $(form_id).attr('action', url).submit();
 	  return false;
   };
+
+  
