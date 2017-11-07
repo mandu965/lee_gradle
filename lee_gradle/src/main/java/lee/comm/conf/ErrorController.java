@@ -12,6 +12,6 @@ public class ErrorController {
 
 	@RequestMapping(value = "/error/adminCheck", method = RequestMethod.GET)
     public String usrAdd(Locale locale, Model model ) {
-        return "error/adminCheck";
+        return "error/adminCheck"; 
     }
 }
