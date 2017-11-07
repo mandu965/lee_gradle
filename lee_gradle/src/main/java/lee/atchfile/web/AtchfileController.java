@@ -21,6 +21,20 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 @Controller
 public class AtchfileController {
 	
+	@RequestMapping(value = "/test")
+    public String test(Model model) {
+         
+        return "test";
+         
+    }
+	
+	@RequestMapping(value = "/test/file")
+    public String testIfle(Model model) {
+         System.out.println("@@@@@@");
+        return "test";
+         
+    }
+	
 	@RequestMapping(value = "/fileUpload", method = RequestMethod.GET)
     public String dragAndDrop(Model model) {
          
