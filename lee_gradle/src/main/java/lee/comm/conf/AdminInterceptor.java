@@ -30,9 +30,9 @@ public class AdminInterceptor extends HandlerInterceptorAdapter{
         	System.out.println("세션 id==" + usrVO.getUsr_id());
         	String usr_auth_cd = usrVO.getUsr_auth_cd();
         	if(!usr_auth_cd.equals("103")){
-        		response.sendRedirect(request.getContextPath()+"/error/adminCheck");  
-                return false;	
-        	}
+        		response.sendRedirect(request.getContextPath()+"/error/adminCheck");    
+            return false;             
+        }
         }
 		return true;
 	} 
