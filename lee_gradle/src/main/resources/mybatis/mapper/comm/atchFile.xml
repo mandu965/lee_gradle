@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lee.atchfile.dao.AtchfileMapper"> 
+
+	<insert id="atchFileAdd" parameterType="lee.domain.FileVO" >
+		<selectKey resultType="java.lang.Long"   keyProperty="file_sno"  order="BEFORE">
+			select decode(#{file_sno}, 0, seq_ck_atch_file.nextval, #{file_sno}) from dual
+		</selectKey>
+		insert into ck_atch_file (
+		file_sno, file_no, kpn_url, file_dsp_nm, file_kpn_nm, file_estn_nm, file_sz_byte, reg_usr_no, mod_usr_no, reg_date, mod_date 
+
+		) values (
+		#{file_sno},
+		(
+				select 
+					nvl(max(file_no), 0) + 1
+				from 
+					ck_atch_file
+				where 
+					file_sno = #{file_sno}
+			
+		), 
+		#{kpn_url}, #{file_dsp_nm}, #{file_kpn_nm}, #{file_estn_nm}, #{file_sz_byte}, #{reg_usr_no}, #{reg_usr_no}, sysdate, sysdate
+		)
+	</insert>
+	
+	<select id="fileList" parameterType="long" resultType="lee.domain.FileVO">
+		select
+			file_sno, file_no,file_no, kpn_url, file_dsp_nm, file_kpn_nm, 
+			file_sz_byte, reg_usr_no, mod_usr_no, reg_date, mod_date, file_estn_nm 
+		from
+			ck_atch_file
+		where
+			file_sno = #{value}
+	</select>
+	
+	<select id="fileView" parameterType="hashmap" resultType="lee.domain.FileVO">
+		select
+			file_sno, file_no,file_no, kpn_url, file_dsp_nm, file_kpn_nm, 
+			file_sz_byte, reg_usr_no, mod_usr_no, reg_date, mod_date 
+		from
+			ck_atch_file
+		where
+			file_sno = #{file_sno} and
+			file_no = #{file_no}
+	</select>
+
+ </mapper>

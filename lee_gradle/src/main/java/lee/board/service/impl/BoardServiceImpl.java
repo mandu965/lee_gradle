@@ -2,25 +2,28 @@ package lee.board.service.impl;
 
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import lee.atchfile.service.AtchFileService;
 import lee.board.dao.BoardMapper;
 import lee.board.service.BoardSearchVO;
 import lee.board.service.BoardService;
 import lee.comm.util.LoginManager;
 import lee.domain.BoardVO;
 import lee.domain.CmntVO;
-import lee.domain.UsrVO;
 
 @Service("boardServiceImpl")
 public class BoardServiceImpl implements BoardService{
 	
 	@Autowired
 	BoardMapper boardMapper;
+	
+	@Resource(name="atchService")
+	AtchFileService atchFileService;
 	
 	public int boardCount(BoardSearchVO boardSearchVO) {
 		return boardMapper.boardCount(boardSearchVO);
@@ -31,6 +34,11 @@ public class BoardServiceImpl implements BoardService{
 	
 	public long boardAdd(HttpServletRequest req, BoardVO boardVO) {
 		boardVO.setReg_usr_no(LoginManager.getUsrNo(req));
+		long atch_file_sno = 0;
+		
+		atch_file_sno = atchFileService.atchFileAdd(req, atch_file_sno);
+		boardVO.setAtch_file_sno(atch_file_sno);
+		
 		long inertRowCnt =boardMapper.boardAdd(boardVO); 
 		return inertRowCnt == 0 ? 0 : boardVO.getBlt_rsrc_sno();
 	}

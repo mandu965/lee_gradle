@@ -116,13 +116,29 @@ $(document).ready(function(){
 		      ${boardVO.bbs_title}
 		    </div>
 		  </div>
-
+		  
 		  <div class="form-group">
-		   	<label for="inputPassword3" class="col-sm-2 control-label">contents</label>
+		    <label for="inputEmail3" class="col-sm-2 control-label">contents</label>
+		    <div class="col-sm-10">
+		      ${boardVO.bbs_contents}
+		    </div>
+		  </div>
+		  
+		  
+		  <div class="form-group">
+		   	<label for="inputPassword3" class="col-sm-2 control-label">files</label>
 		   	<div class="col-sm-10">
-		   		${boardVO.bbs_contents}
+		   		 <c:choose> 
+					<c:when test="${not empty atchFileList}">
+						<c:forEach items="${atchFileList}" var="vo" varStatus="index">
+							<a href="/comm/attach/attachDown.do?file_sno=${vo.file_sno}&file_no=${vo.file_no}" id="${vo.file_sno};${vo.file_no}">${vo.file_dsp_nm}</a><br>
+						</c:forEach>
+					</c:when>
+				</c:choose>
 		   	</div>
 		  </div>
+		  
+		 	
 		</form>
 
         <div class="pull-right"><a href="#" class="btn btn-primary btn-success boardMdoBtn"><span class="glyphicon glyphicon-edit"></span>Mod</a></div>

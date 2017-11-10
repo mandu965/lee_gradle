@@ -2314,7 +2314,7 @@
     })();
     (function() {
         "use strict";
-        qq.FineUploaderBasic = function(o) {
+        qq.FineUploaderBasic = function(o) {///////////////
             var self = this;
             this._options = {
                 debug: false,
@@ -6378,7 +6378,7 @@
             }
         };
     })();
-    qq.FineUploader = function(o, namespace) {
+    qq.FineUploader = function(o, namespace) {///////////////
         "use strict";
         var self = this;
         this._parent = namespace ? qq[namespace].FineUploaderBasic : qq.FineUploaderBasic;
@@ -6584,7 +6584,8 @@
             dropText: "qq-upload-drop-area-text-selector",
             dropProcessing: "qq-drop-processing-selector",
             dropProcessingSpinner: "qq-drop-processing-spinner-selector",
-            thumbnail: "qq-thumbnail-selector"
+            thumbnail: "qq-thumbnail-selector",
+            inputValue : "qq-upload-file-input"/////////////////
         }, previewGeneration = {}, cachedThumbnailNotAvailableImg = new qq.Promise(), cachedWaitingForThumbnailImg = new qq.Promise(), log, isEditElementsExist, isRetryElementExist, templateHtml, container, fileList, showThumbnails, serverScale, cacheThumbnailPlaceholders = function() {
             var notAvailableUrl = options.placeholders.thumbnailNotAvailable, waitingUrl = options.placeholders.waitingForThumbnail, spec = {
                 maxSize: thumbnailMaxSize,
@@ -6921,8 +6922,8 @@
             disableCancel: function() {
                 isCancelDisabled = true;
             },
-            addFile: function(id, name, prependInfo, hideForever, batch) {
-                var fileEl = qq.toElement(templateHtml.fileTemplate), fileNameEl = getTemplateEl(fileEl, selectorClasses.file), uploaderEl = getTemplateEl(container, selectorClasses.uploader), fileContainer = batch ? fileBatch.content : fileList, thumb;
+            addFile: function(id, name, prependInfo, hideForever, batch) {////////////////////  inputValue
+                var fileEl = qq.toElement(templateHtml.fileTemplate), fileNameEl2=getTemplateEl(fileEl, selectorClasses.inputValue), fileNameEl = getTemplateEl(fileEl, selectorClasses.file), uploaderEl = getTemplateEl(container, selectorClasses.uploader), fileContainer = batch ? fileBatch.content : fileList, thumb;
                 if (batch) {
                     fileBatch.map[id] = fileEl;
                 }
@@ -6930,9 +6931,19 @@
                 uploaderEl.removeAttribute(DROPZPONE_TEXT_ATTR);
                 if (fileNameEl) {
                     qq(fileNameEl).setText(name);
-                    fileNameEl.setAttribute("title", name);
+                    fileNameEl.setAttribute("title", name); //qq-upload-file-selector qq-upload-file set
                 }
                 fileEl.setAttribute(FILE_ID_ATTR, id);
+                //////////////////// test
+/*                if (fileNameEl2) {
+
+                    fileNameEl2.setAttribute("title", name);
+                    fileNameEl2.setAttribute("name", 'qq-name-'+id);
+                    fileNameEl2.setAttribute("value", name);
+                    fileNameEl2.setAttribute("value", name);
+                }*/
+                
+                /////////////////////
                 if (prependInfo) {
                     prependFile(fileEl, prependInfo.index, fileContainer);
                 } else {
@@ -8304,7 +8315,7 @@
                     localBlankPagePath: null
                 },
                 chunking: {
-                    partSize: 5242880
+                    partSize: 52428800000000000
                 },
                 cors: {
                     allowXdr: true
@@ -9830,7 +9841,7 @@
                 return promise;
             }
         });
-    };
+    };//fileUpload?
     (function() {
         "use strict";
         qq.s3.FineUploader = function(o) {

@@ -9,10 +9,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!--fileUpload, drag_drop :S -->
-<link rel="stylesheet" href="/resurces/fileUpload/drag_drop/css/drag_drop.css" >
-<script src="/resurces/fileUpload/drag_drop/js/drag_drop.js"></script>
+<link rel="stylesheet" href="/resources/fileUpload/drag_drop/css/drag_drop.css" >
+<script src="/resources/fileUpload/drag_drop/js/drag_drop.js"></script>
 <!--fileUpload, drag_drop :E -->
 
+
+<!--fileUpload, drag_drop, select :S -->
+<link rel="stylesheet" href="/resources/fileUpload/all.fine-uploader/fine-uploader-new.css" >
+<script src="/resources/fileUpload/all.fine-uploader/all.fine-uploader.js"></script>
+<!--fileUpload, drag_drop, select :E -->
 
 <script>
 
@@ -110,13 +115,20 @@ $(document).ready(function(){
 		   	</div>
 		  </div>
 		  
-		  <div class="form-group">
+		  <!-- <div class="form-group">
 		    <label for="inputEmail3" class="col-sm-2 control-label">첨부파일</label>
 		    <div class="col-sm-10">
 		      <div id="fileUpload" class="dragAndDropDiv">Drag & Drop Files Here</div>
 		    </div>
+		  </div> -->
+		  <div class="form-group">
+		    <label for="inputEmail3" class="col-sm-2 control-label">첨부파일</label>
+		    <div class="col-sm-10">
+		      <div id="fine-uploader"></div>
+    			<!-- Fine Uploader -->
+    			<jsp:include page="/resources/fileUpload/all.fine-uploader/lee/division_script.jsp" flush="true" />
+		    </div>
 		  </div>
-		  
 
 
 		</form>

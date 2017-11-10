@@ -1,7 +1,5 @@
 package lee.board.controller;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,28 +7,29 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 
+import lee.atchfile.service.AtchFileService;
 import lee.board.service.BoardSearchVO;
 import lee.board.service.BoardService;
 import lee.comm.util.LoginManager;
 import lee.domain.BoardVO;
 import lee.domain.CmntVO;
+import lee.domain.FileVO;
 
 @Controller
 public class BoardController {
 	
 	@Resource(name="boardServiceImpl")
 	BoardService boardService;
+	
+	@Resource(name="atchService")
+	AtchFileService atchFileService;
 	
 	//게시판 에즈윅 에디터
 	//https://summernote.org/
@@ -106,27 +105,11 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/board/**/boardAddPro", method = RequestMethod.POST)
-    public @ResponseBody Map<String, String> boardAddPro(HttpServletRequest req, @ModelAttribute("boardForm") BoardVO boardVO, @RequestPart MultipartFile files) {
+    public @ResponseBody Map<String, String> boardAddPro(HttpServletRequest req, @ModelAttribute("boardForm") BoardVO boardVO) {
 		Map<String, String> params = new HashMap<String, String>();
 		long result = 0;
-		//result=boardService.boardAdd(req, boardVO);
-		  String sourceFileName = files.getOriginalFilename(); 
-	        String sourceFileNameExtension = FilenameUtils.getExtension(sourceFileName).toLowerCase(); 
-	        File destinationFile; 
-	        String destinationFileName;
-	        String fileUrl = "C:\\Users\\leejh\\Desktop\\file";
-	        do { 
-	            destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + sourceFileNameExtension; 
-	            destinationFile = new File(fileUrl + destinationFileName); 
-	        } while (destinationFile.exists()); 
-	        
-	        destinationFile.getParentFile().mkdirs(); 
-	        try {
-				files.transferTo(destinationFile);
-			} catch (IllegalStateException | IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} 
+		result=boardService.boardAdd(req, boardVO);
+		
 		params.put("result", result+"");
 		return params;
     }
@@ -135,8 +118,14 @@ public class BoardController {
     public String boardView(HttpServletRequest req, ModelMap modelMap, @ModelAttribute("boardSearchVO") BoardSearchVO boardSearchVO) {
 		String jspPath =req.getRequestURI();
 		BoardVO boardVO= boardService.boardView(boardSearchVO);
+		
+		
+		List<FileVO> atchFileList = atchFileService.fileList(boardVO.getAtch_file_sno());
+		
+		modelMap.put("atchFileList", atchFileList);
 		modelMap.put("boardSearchVO", boardSearchVO);
 		modelMap.put("boardVO", boardVO);
+		
 		return jspPath;
 	}
 	

@@ -57,7 +57,7 @@ $(document).ready(function(){
       <hr>
 
       <footer>
-        <p>&copy; Company 2014</p>
+        <p>&copy; Lee Jung Hun</p>
       </footer>
     </div> <!-- /container -->
 

@@ -6404,7 +6404,7 @@
                     localBlankPagePath: null
                 },
                 chunking: {
-                    partSize: 5242880
+                    partSize: 524288000000
                 },
                 cors: {
                     allowXdr: true
