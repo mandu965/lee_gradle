@@ -69,10 +69,10 @@ dependencies {
 	// JSONObject
 	compile group: 'org.json', name: 'json', version: '20090211'
 	
-	compile group: 'log4j', name: 'log4j', version: '1.2.16'
-	
-	
-	 
+	// https://mvnrepository.com/artifact/org.bgee.log4jdbc-log4j2/log4jdbc-log4j2-jdbc4
+	//compile group: 'org.bgee.log4jdbc-log4j2', name: 'log4jdbc-log4j2-jdbc4', version: '1.16'
+	//compile('ch.qos.logback:logback-classic:1.1.2')
+
 
 }
  
