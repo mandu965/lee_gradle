@@ -11,6 +11,7 @@ public interface BoardMapper {
 	List<BoardVO> boardList(BoardSearchVO boardSearchVO);
 	long boardAdd(BoardVO boardVO);
 	BoardVO boardView(BoardSearchVO boardSearchVO);
+	boolean boardMod(BoardVO boardVO);
 	long cmntAdd(CmntVO cmntVO);
 	List<CmntVO> cmntList(CmntVO cmntVO);
 	CmntVO cmntView(long cmnt_sno);

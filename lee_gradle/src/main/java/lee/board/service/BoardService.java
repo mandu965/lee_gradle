@@ -12,6 +12,7 @@ public interface BoardService {
 	List<BoardVO> boardList(BoardSearchVO boardSearchVO);
 	long boardAdd(HttpServletRequest req, BoardVO boardVO);
 	BoardVO boardView(BoardSearchVO boardSearchVO);
+	boolean boardMod(HttpServletRequest req, BoardVO boardVO);
 	long cmntAdd(CmntVO cmntVO);
 	List<CmntVO> cmntList(CmntVO cmntVO);
 	CmntVO cmntView(long cmnt_sno);

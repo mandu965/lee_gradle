@@ -18,17 +18,17 @@
 <link rel="stylesheet" href="/resources/fileUpload/all.fine-uploader/fine-uploader-new.css" >
 <script src="/resources/fileUpload/all.fine-uploader/all.fine-uploader.js"></script>
 <!--fileUpload, drag_drop, select :E -->
-
 <script>
 
 $(document).ready(function(){
-	
+	 
 	 $('#summernote').summernote({
 	        placeholder: 'Write contents',
 	        height: 400,
 	        minHeight: null,             // set minimum height of editor
 	        maxHeight: null,             // set maximum height of editor
 	      });
+	 
 	 ////////////////////////////////////////////////////////////
 	dropFileInit($("#fileUpload"));
 	
@@ -39,12 +39,12 @@ $(document).ready(function(){
 		$("#boardSearchVO").attr('action', '/board/notice/boardList').submit();
 		return false;
 	});
-	
+	 
 	$('.boardAddBtn').click(function(){
 		
 		var markupStr = $('#summernote').summernote('code');
 		$("#bbs_contents").val(markupStr);
-		//$("#boardForm").attr('action', '/board/notice/boardAddPro').submit();
+
 		$.ajax({
 			url: '/board/notice/boardAddPro',
 			data: $("#boardForm").serialize(),
@@ -63,8 +63,6 @@ $(document).ready(function(){
 				}		
 			}
 		});
-		
-		
 		
 		return false;
 	});
@@ -115,13 +113,7 @@ $(document).ready(function(){
 		   	</div>
 		  </div>
 		  
-		  <!-- <div class="form-group">
-		    <label for="inputEmail3" class="col-sm-2 control-label">첨부파일</label>
-		    <div class="col-sm-10">
-		      <div id="fileUpload" class="dragAndDropDiv">Drag & Drop Files Here</div>
-		    </div>
-		  </div> -->
-		  <div class="form-group">
+		 <div class="form-group">
 		    <label for="inputEmail3" class="col-sm-2 control-label">첨부파일</label>
 		    <div class="col-sm-10">
 		      <div id="fine-uploader"></div>
@@ -132,12 +124,8 @@ $(document).ready(function(){
 
 
 		</form>
-		
 
-
-		
         <div class="pull-right"><a href="#" class="btn btn-primary btn-success boardAddBtn"><span class="glyphicon glyphicon-pencil"></span> Write</a></div>
-        
     </div>
 </body>
 </html>

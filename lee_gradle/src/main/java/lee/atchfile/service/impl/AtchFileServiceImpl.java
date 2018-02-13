@@ -66,5 +66,25 @@ public class AtchFileServiceImpl implements AtchFileService{
 		params.put("file_no", file_no);
 		return atchfileMapper.fileView(params);
 	}
+	
+	public boolean delFile(long file_sno, String file_no_str) {
+		Map<String, Long> params = new HashMap<String, Long>();
+		boolean result = false;
+		
+		long file_no = 0;
+		
+		if(file_no_str!=null) {
+			String[] file_no_arr = file_no_str.split(":");
+			for(String file_no_split : file_no_arr) {
+				file_no = LeeUtil.StringToLong(file_no_split);
+				params.put("file_sno", file_sno);
+				params.put("file_no", file_no);
+				result = atchfileMapper.delFile(params);
+			}
+		}
+		
+		return result;
+		
+	}
 
 }

@@ -44,5 +44,15 @@
 			file_sno = #{file_sno} and
 			file_no = #{file_no}
 	</select>
+	
+	<delete id="delFile" parameterType="hashmap" >
+		delete  
+			ck_atch_file
+		where
+			file_sno = #{file_sno} and
+			file_no = #{file_no}
+	</delete>
+	
+	
 
  </mapper>

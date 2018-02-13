@@ -17,4 +17,5 @@ public class BoardVO {
 	
 	private String usr_nm;
 	private String usr_id;
+	private String del_file_no;
 }
