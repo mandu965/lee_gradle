@@ -47,6 +47,19 @@ public class BoardServiceImpl implements BoardService{
 		return boardMapper.boardView(boardSearchVO);
 	}
 	
+	public boolean boardMod(HttpServletRequest req, BoardVO boardVO) {
+		long atch_file_sno = boardVO.getAtch_file_sno();
+		
+		
+		if(boardVO.getDel_file_no()!=null) {
+			atchFileService.delFile(atch_file_sno, boardVO.getDel_file_no());
+		}
+		atch_file_sno = atchFileService.atchFileAdd(req, atch_file_sno);
+		boardVO.setAtch_file_sno(atch_file_sno);
+		
+		return boardMapper.boardMod(boardVO);
+	}
+	
 	public long cmntAdd(CmntVO cmntVO) {
 		return boardMapper.cmntAdd(cmntVO);
 	}

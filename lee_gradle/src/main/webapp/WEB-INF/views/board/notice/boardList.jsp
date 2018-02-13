@@ -100,8 +100,10 @@ $(document).ready(function(){
 								</td>
 
 								<td>
-								<a id="${vo.blt_rsrc_sno}" class="boardView" data-toggle="modal" href="#;" data-target="#modal-testNew" role="button" data-backdrop="static">	
-								${vo.bbs_title}</a>
+								
+								<a id="${vo.blt_rsrc_sno}" class="boardView" data-toggle="modal" href="#;" data-target="#modal-testNew" role="button" data-backdrop="static">
+								<span data-tooltip-text="<c:out value='${vo.bbs_title}'/>">${vo.bbs_title}</span>
+								</a>
 								</td>
 								<td><c:out value="${vo.usr_id}"/></td>
 								<td><c:out value="${vo.bbs_cnt}"/></td>
@@ -132,6 +134,7 @@ $(document).ready(function(){
 				<div class="jb-center" >
 			
 		            <ul class="pagination">
+		            
 		            	<c:if test="${nowPageGroup > 1}">
 							<li><a href="#;" onclick='paging_script(${(nowPageGroup-2)*pageGroupSize+1 },${pageSize},"boardSearchVO","/board/notice/boardList");' ><span class="glyphicon glyphicon-chevron-left"></span></a></li>
 						</c:if>

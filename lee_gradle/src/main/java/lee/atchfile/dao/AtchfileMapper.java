@@ -9,4 +9,5 @@ public interface AtchfileMapper {
 	long atchFileAdd(FileVO fileVO);
 	List<FileVO> fileList(long file_sno);
 	FileVO fileView(Map<String, Long> params);
+	boolean delFile(Map<String, Long> params);
 }

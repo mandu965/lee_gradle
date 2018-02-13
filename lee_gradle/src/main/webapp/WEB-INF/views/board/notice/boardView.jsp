@@ -125,7 +125,7 @@ $(document).ready(function(){
 		  </div>
 		  
 		  
-		  <div class="form-group">
+		  <%-- <div class="form-group">
 		   	<label for="inputPassword3" class="col-sm-2 control-label">files</label>
 		   	<div class="col-sm-10">
 		   		 <c:choose> 
@@ -136,7 +136,7 @@ $(document).ready(function(){
 					</c:when>
 				</c:choose>
 		   	</div>
-		  </div>
+		  </div> --%>
 		  
 		 	
 		</form>

@@ -53,7 +53,6 @@ dependencies {
     compile "org.slf4j:slf4j-api:${version.slf4j}"
     
 	compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '8.5.20'
-    
 	compile('javax.servlet:jstl:1.2') /*jsp */
 
 	// check://dynaticy.tistory.com/10

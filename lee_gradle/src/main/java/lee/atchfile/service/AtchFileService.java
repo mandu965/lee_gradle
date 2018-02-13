@@ -11,4 +11,5 @@ public interface AtchFileService {
 	long atchFileAdd(HttpServletRequest req, long file_sno);
 	List<FileVO> fileList(long file_sno);
 	FileVO fileView(long file_sno, long file_no);
+	boolean delFile(long file_sno, String file_no_str);
 }

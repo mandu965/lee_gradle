@@ -1,5 +1,6 @@
 package lee.board.controller;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +19,8 @@ import lee.atchfile.service.AtchFileService;
 import lee.board.service.BoardSearchVO;
 import lee.board.service.BoardService;
 import lee.comm.util.LoginManager;
+import lee.comm.util.ReflectTest;
+import lee.comm.util.XmlExtraction;
 import lee.domain.BoardVO;
 import lee.domain.CmntVO;
 import lee.domain.FileVO;
@@ -37,9 +40,28 @@ public class BoardController {
 	//부트스트랩 참고
 	//https://bootsnipp.com/?page=11
 	@RequestMapping(value = "/board/**/boardList")
-    public String boardList(HttpServletRequest req, ModelMap modelMap, @ModelAttribute("boardSearchVO") BoardSearchVO boardSearchVO) {
+    public String boardList(HttpServletRequest req, ModelMap modelMap, @ModelAttribute("boardSearchVO") BoardSearchVO boardSearchVO) throws Exception {
 		String jspPath =req.getRequestURI();
-		   
+		/*
+		 * 자바리플렉션
+		ReflectTest test = new ReflectTest();
+		try {
+			test.objectAccessTest();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+		
+		/*
+		 * 엑셀 데이터 추출
+		XmlExtraction test = new XmlExtraction();
+		try {
+			//test.getXmlData(new File("src/main/webapp/resources/sample/xmlTest.xml"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+		
 		///////paging : S//////////////////////////////
 		
 		int pageSize = boardSearchVO.getPageSize();// 한페이지에 나오는 게시물 개수
@@ -128,6 +150,30 @@ public class BoardController {
 		
 		return jspPath;
 	}
+	
+	@RequestMapping(value = "/board/**/boardModPro", method = RequestMethod.POST)
+    public @ResponseBody Map<String, String> boardModPro(HttpServletRequest req, @ModelAttribute("boardForm") BoardVO boardVO) {
+		System.out.println("수정");
+		Map<String, String> params = new HashMap<String, String>();
+		boolean result = false;
+		result=boardService.boardMod(req, boardVO);
+		
+		params.put("result", result+"");
+		return params;
+    }	
+	
+	@RequestMapping(value = "/board/**/boardMod")
+    public String boardMod(HttpServletRequest req, ModelMap modelMap, @ModelAttribute("boardSearchVO") BoardSearchVO boardSearchVO) {
+		
+		String jspPath =req.getRequestURI();
+		BoardVO boardVO= boardService.boardView(boardSearchVO);
+		List<FileVO> atchFileList = atchFileService.fileList(boardVO.getAtch_file_sno());
+		modelMap.put("atchFileList", atchFileList);
+		modelMap.put("boardSearchVO", boardSearchVO);
+		modelMap.put("boardVO", boardVO);
+		
+		return jspPath;
+	}	
 	
 
 	/** 코멘트 목록 */

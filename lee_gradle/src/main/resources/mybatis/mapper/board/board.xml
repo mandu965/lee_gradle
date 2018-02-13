@@ -72,6 +72,18 @@
 	 		blt_rsrc_sno = #{blt_rsrc_sno}
 	 </select>
 	 
+	 <update id="boardMod" parameterType="lee.domain.BoardVO">
+	 	update
+			ck_blt_rsrc
+		set
+			bbs_title=#{bbs_title},
+			bbs_contents = #{bbs_contents},
+			atch_file_sno = #{atch_file_sno},
+			mod_date = sysdate
+		where
+			blt_rsrc_sno = #{blt_rsrc_sno}
+	 </update>
+	 
 	 <select id="cmntList" parameterType="lee.domain.CmntVO" resultType="lee.domain.CmntVO">
 		select
 			cmnt_sno, cmnt_contents, blt_rsrc_sno, to_char(reg_date, 'yyyy-mm-dd hh24:mi') as reg_date, 
