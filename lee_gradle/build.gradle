@@ -1,7 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'eclipse-wtp' // 이클립스에서 구동하고 배포하기위한 플러그인
 apply plugin: 'war'
- 
+
 sourceCompatibility = 1.8   //자바버전
 targetCompatibility = 1.8
  
@@ -71,8 +71,7 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.bgee.log4jdbc-log4j2/log4jdbc-log4j2-jdbc4
 	//compile group: 'org.bgee.log4jdbc-log4j2', name: 'log4jdbc-log4j2-jdbc4', version: '1.16'
 	//compile('ch.qos.logback:logback-classic:1.1.2')
-
-
+	
 }
  
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8' // UTF 8 compile

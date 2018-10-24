@@ -1,12 +1,16 @@
 package lee.board.controller;
 
+import java.io.File;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -20,7 +24,8 @@ import lee.board.service.BoardSearchVO;
 import lee.board.service.BoardService;
 import lee.comm.util.LoginManager;
 import lee.comm.util.ReflectTest;
-import lee.comm.util.XmlExtraction;
+import lee.comm.util.XMLParserHandler;
+import lee.comm.util.XmlExtraction_builder;
 import lee.domain.BoardVO;
 import lee.domain.CmntVO;
 import lee.domain.FileVO;
@@ -53,14 +58,29 @@ public class BoardController {
 		}*/
 		
 		/*
-		 * 엑셀 데이터 추출
+		 * 엑셀 데이터 추출  Builder 방식
 		XmlExtraction test = new XmlExtraction();
 		try {
 			//test.getXmlData(new File("src/main/webapp/resources/sample/xmlTest.xml"));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
+		}
+		*/
+		
+		
+		//엑셀데이터 추출 Handler 방식
+		/*
+		File file = new File("src/main/webapp/resources/sample/xmlTest.xml");
+		SAXParserFactory spf = SAXParserFactory.newInstance();
+		spf.setFeature("http://xml.org/sax/features/external-general-entities", false);
+        spf.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
+        spf.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
+        SAXParser sp = spf.newSAXParser();
+        XMLParserHandler parserHandler = new XMLParserHandler();
+        sp.parse(file, parserHandler);        // Start Parsi
+        ArrayList<String> fileList = parserHandler.getTagList();
+        */
 		
 		///////paging : S//////////////////////////////
 		

@@ -10,7 +10,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-public class XmlExtraction {
+public class XmlExtraction_builder {
 	
 	public void getXmlData(File xmlFile) throws Exception {
 		 //1.문서를 읽기위한 공장을 만들어야 한다.
