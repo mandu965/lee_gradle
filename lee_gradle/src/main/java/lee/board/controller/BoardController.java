@@ -79,7 +79,7 @@ public class BoardController {
         SAXParser sp = spf.newSAXParser();
         XMLParserHandler parserHandler = new XMLParserHandler();
         sp.parse(file, parserHandler);        // Start Parsi
-        ArrayList<String> fileList = parserHandler.getTagList();
+        ArrayList<String> tagList = parserHandler.getTagList();
         */
 		
 		///////paging : S//////////////////////////////
