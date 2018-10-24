@@ -19,12 +19,12 @@
 			<input type="hidden" id="cmnt_sno" name="cmnt_sno" value="${cmntVO.cmnt_sno}"/>
 			<input type="hidden" id="cmnt_contents" name="cmnt_contents" value=""/>
    		<div class="form-group">
-			 <h4><label for="inputEmail3" class="col-sm-2 control-label">Comments</label></h4>
- 			<div class="col-sm-10"></div>
+		<h4><label for="inputEmail3" class="col-sm-1 control-label">Comments</label></h4>
+ 			
  		</div>
 		    				
 		<div class="form-group">
-		 	<label for="inputEmail3" class="col-sm-2 control-label"></label>
+		 	<label for="inputEmail3" class="col-sm-1 control-label"></label>
 			<div class="col-sm-10">
 		 		<c:choose> 
 					<c:when test="${not empty cmntList}">
@@ -45,8 +45,8 @@
 			</div>
 		</div>
 		  <div class="form-group">
-		    <label for="inputEmail3" class="col-sm-2 control-label">Content</label>
-		     <div class="col-sm-10">
+		    <label for="inputEmail3" class="col-sm-1 control-label">Content</label>
+		     <div class="col-sm-11">
 		    <c:choose>
 	            <c:when test="${empty usrSession }">
 		            <p class="lead">로그인이 필요합니다.</p>

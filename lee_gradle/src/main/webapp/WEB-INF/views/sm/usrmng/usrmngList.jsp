@@ -192,7 +192,7 @@ $(document).ready(function(){
 				<c:if test="${nowPageGroup < pageGroupCount}">
 					<a href="<c:url value = "/sm/usrmng/usrmngList?pageIndex=${nowPageGroup*pageGroupSize+1}&pageSize=${pageSize}&bbs_sno=${bbs_sno}"/>">[다음]</a>
 				</c:if> --%>
-				<div class="jb-center" >
+				<div class="div-center" >
 			
 		            <ul class="pagination">
 		            	<c:if test="${nowPageGroup > 1}">

@@ -110,19 +110,39 @@ $(document).ready(function(){
         	<input type="hidden" id="bbs_sno" name="bbs_sno" value="${boardVO.bbs_sno}"/>
         	<input type="hidden" id="blt_rsrc_sno" name="blt_rsrc_sno" value="${boardVO.blt_rsrc_sno}"/>
         	
-		  <div class="form-group">
-		    <label for="inputEmail3" class="col-sm-2 control-label">Title</label>
-		    <div class="col-sm-10">
-		      ${boardVO.bbs_title}
-		    </div>
-		  </div>
+        <div class="view">
+        <%-- 
+	        <div class="form-group">
+			    <label for="inputEmail3" class="col-sm-1 control-label">Title</label>
+			    <div class="col-sm-11">
+			      ${boardVO.bbs_title}
+			    </div>
+			  </div>
+			  
+			  <div class="form-group">
+			    <label for="inputEmail3" class="col-sm-1 control-label">contents</label>
+			    <div class="col-sm-11">
+			      ${boardVO.bbs_contents}
+			    </div>
+			  </div>
+			   --%>
+			  <table class="table table-bordered">
+  				<tr>
+  					<td colspan="5"  class="view_title">${boardVO.bbs_title}</td>
+  				</tr>
+  				<tr class="active">
+	  				<td class="col-sm-2">이정훈 </td>
+	  				<td class="col-sm-1">댓글 2</td>
+	  				<td class="col-sm-4">&nbsp;</td>
+	  				<td class="col-sm-3">2018-10-10 :15:30</td>
+	  				<td class="col-sm-2">조회수 3</td>
+  				</tr>
+  				<tr>
+  					<td colspan="5" > ${boardVO.bbs_contents}</td>
+  				</tr>
+			</table>
+        </div>	
 		  
-		  <div class="form-group">
-		    <label for="inputEmail3" class="col-sm-2 control-label">contents</label>
-		    <div class="col-sm-10">
-		      ${boardVO.bbs_contents}
-		    </div>
-		  </div>
 		  
 		  
 		  <%-- <div class="form-group">

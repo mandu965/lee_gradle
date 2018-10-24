@@ -131,7 +131,7 @@ $(document).ready(function(){
 					<c:set var="endPage" value="${pageCount}" />
 				</c:if>
 
-				<div class="jb-center" >
+				<div class="div-center" >
 			
 		            <ul class="pagination">
 		            

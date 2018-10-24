@@ -46,38 +46,12 @@
 }
 /* tooltip : E */
 
-.g-header {
-  text-align: right;
-  font-weight: bold;
-}
-.jb-center {
-        text-align: center;
- }
-      
-.search_div{
-	border: 1px solid #cccccc;
-	background-color: #efefef;	
-	padding:10px 5px 0 5px;
-	margin-bottom:30px;
-}
-.searchBtn_div{
-	float:right;
-	text-align:right;	
-	position: relative;
-}
 
-.board_div{
-	padding:0px 20px 0px 20px;
-	/* width:80%; */
-	margin :0 auto;
-}
+
 
 .comment_form{
 	margin :0 auto;
 }
-
-dt.writeinfo  {font-size:12px; color:#9b9b9b; }
-dd.contents{border-bottom:2px dotted #E7E7E7;}
 
 pre.cmntContent{
 	border: 0px;

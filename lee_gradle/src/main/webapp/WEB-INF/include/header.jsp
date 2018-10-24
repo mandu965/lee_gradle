@@ -16,7 +16,13 @@
 <!--summernote :E -->
 
 <link rel="stylesheet" href="/resources/lee/css/lee.css" >
+
+<link rel="stylesheet" href="/resources/lee/css/lee_default.css" >
+<link rel="stylesheet" href="/resources/lee/css/lee_div.css" >
+<link rel="stylesheet" href="/resources/lee/css/lee_table.css" >
 <script src="/resources/lee/js/lee.js" ></script>
+
+
 
 
 <%@taglib prefix="lee" uri="/WEB-INF/tlds/CommonUtil.tld" %>

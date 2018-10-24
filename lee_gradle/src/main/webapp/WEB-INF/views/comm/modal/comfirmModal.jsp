@@ -62,25 +62,25 @@ $(document).ready(function(){
 	      <div class="modal-body">
 	      <div class="usrView_div">
 				<div class="row">
-				  <div class="col-xs-3 text-right g-header">성명 :</div><div class="col-xs-9">${usrVO.usr_nm}</div>
+				  <div class="col-xs-3 text-right modal-column">성명 :</div><div class="col-xs-9">${usrVO.usr_nm}</div>
 				</div>	      
 		        <div class="row">
-				  <div class="col-xs-3 text-right g-header" >ID :</div><div class="col-xs-9">${usrVO.usr_id}</div>
+				  <div class="col-xs-3 text-right modal-column" >ID :</div><div class="col-xs-9">${usrVO.usr_id}</div>
 				</div>
 				<div class="row">
-				  <div class="col-xs-3 text-right g-header">성별 :</div><div class="col-xs-9">${usrVO.usr_sex}</div>
+				  <div class="col-xs-3 text-right modal-column">성별 :</div><div class="col-xs-9">${usrVO.usr_sex}</div>
 				</div>
 				<div class="row">
-				  <div class="col-xs-3 text-right g-header">연락처 :</div><div class="col-xs-9">${usrVO.usr_hp}</div>
+				  <div class="col-xs-3 text-right modal-column">연락처 :</div><div class="col-xs-9">${usrVO.usr_hp}</div>
 				</div>
 				<div class="row">
-				  <div class="col-xs-3 text-right g-header">주소 :</div><div class="col-xs-9">${usrVO.usr_addr}</div>
+				  <div class="col-xs-3 text-right modal-column">주소 :</div><div class="col-xs-9">${usrVO.usr_addr}</div>
 				</div>
 				<div class="row">
-				  <div class="col-xs-3 text-right g-header">권한 :</div><div class="col-xs-9">${usrVO.usr_auth_cd}</div>
+				  <div class="col-xs-3 text-right modal-column">권한 :</div><div class="col-xs-9">${usrVO.usr_auth_cd}</div>
 				</div>
 				<div class="row">
-				  <div class="col-xs-3 text-right g-header">가입일자 :</div><div class="col-xs-9">${usrVO.reg_date}</div>
+				  <div class="col-xs-3 text-right modal-column">가입일자 :</div><div class="col-xs-9">${usrVO.reg_date}</div>
 				</div>
 			</div>
 			<div class="usrMod_div" style="display:none;">
