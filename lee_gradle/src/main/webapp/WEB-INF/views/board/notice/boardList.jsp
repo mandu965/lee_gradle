@@ -36,7 +36,7 @@ $(document).ready(function(){
 <title>Lee's library</title>
 </head>
 <body>
- 
+ <div class="container">
 <jsp:include page="/WEB-INF/include/top.jsp" flush="true" />
 
 
@@ -70,15 +70,15 @@ $(document).ready(function(){
           
           <h4>total : ${count}</h4>
           
-          <div class="table-responsive">
+          <div class="table-reponsive">
             <table class="table table-striped"> <!-- table-hover -->
               <thead>
                 <tr>
-                  <th class="col-xs-1">번호</th>
-                  <th class="col-xs-6">제목</th>
-                  <th class="col-xs-2">글쓴이(ID)</th>
-                  <th class="col-xs-1">조회수</th>
-                  <th class="col-xs-2">등록일</th>
+                  <th class="col-xs-1 mobile_off">번호</th>
+                  <th class="">제목</th>
+                  <th class="col-xs-2 mobile_off">글쓴이(ID)</th>
+                  <th class="col-xs-1 mobile_off">조회수</th>
+                  <th class="col-xs-2 mobile_off">등록일</th>
                 </tr>
               </thead>
               <tbody>
@@ -87,7 +87,7 @@ $(document).ready(function(){
 						<c:forEach items="${articleList}" var="vo" varStatus="idx">
 	
 							<tr class="${idx.count % 2 == 1 ? 'trOdd' : 'trEven'}">
-								<td><c:choose>
+								<td class="mobile_off"><c:choose>
 										<c:when test="${count > pageSize}"> <!-- ex) count= 11, pageSize=10 -->
 											<c:out
 												value="${count - pageSize*(pageIndex-1) - idx.count +1}" /> <!-- 11,10,9,8.......... -->
@@ -104,10 +104,11 @@ $(document).ready(function(){
 								<a id="${vo.blt_rsrc_sno}" class="boardView" data-toggle="modal" href="#;" data-target="#modal-testNew" role="button" data-backdrop="static">
 								<span data-tooltip-text="<c:out value='${vo.bbs_title}'/>">${vo.bbs_title}</span>
 								</a>
+								<div class="mobile_on"><br><c:out value="${vo.usr_id}"/> | <c:out value="${vo.bbs_cnt}"/> |  <c:out value="${vo.reg_date}"/></div>
 								</td>
-								<td><c:out value="${vo.usr_id}"/></td>
-								<td><c:out value="${vo.bbs_cnt}"/></td>
-								<td><c:out value="${vo.reg_date}"/></td>
+								<td class="mobile_off"><c:out value="${vo.usr_id}"/></td>
+								<td class="mobile_off"><c:out value="${vo.bbs_cnt}"/></td>
+								<td class="mobile_off" ><c:out value="${vo.reg_date}"/></td>
 							</tr>
 						</c:forEach>
 					</c:when>
@@ -120,6 +121,7 @@ $(document).ready(function(){
               </tbody>
             </table>
             </div>
+            
            	<div class="pull-right"><a href="#" class="btn btn-primary btn-success boardAddBtn"><span class="glyphicon glyphicon-pencil"></span> Write</a></div>
             <!-- Paging : S -->
 			<c:if test="${count > 0}">
@@ -159,6 +161,6 @@ $(document).ready(function(){
           </div>
         <!-- </div> --> 
 
-
+</div>
 </body>
 </html>

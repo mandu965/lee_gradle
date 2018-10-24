@@ -3,6 +3,8 @@
 	width:80%;
 	margin :0 auto;
 }
+ /* .mobile_on{display:none;}
+ .mobile_off{visibility:visible} */
 
 @media screen and (max-width: 765px){
 .board_div{
@@ -10,6 +12,12 @@
 	width:95%;
 	margin :0 auto;
 }
+ 
+ /* .mobile_on{vdisplay:visible}
+ .mobile_off{display:none} */
+ 
+ #unseen table td:nth-child(1),
+	#unseen table th:nth-child(1){display: none;}
  
 }
  
