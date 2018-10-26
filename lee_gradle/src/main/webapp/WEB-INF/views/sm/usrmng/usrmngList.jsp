@@ -50,7 +50,7 @@ $(document).ready(function(){
 <jsp:include page="/WEB-INF/include/top.jsp" flush="true" />
 
 <!-- left : S -->
-        
+        <!-- 
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li class="active"><a href="#">User Manage <span class="sr-only">(current)</span></a></li>
@@ -71,6 +71,7 @@ $(document).ready(function(){
             <li><a href="">Another nav item</a></li>
           </ul>
         </div>
+         -->
 <!-- left : E -->
  	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h2 class="page-header">User Manage</h2>

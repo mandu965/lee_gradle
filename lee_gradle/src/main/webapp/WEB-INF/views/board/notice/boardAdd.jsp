@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@include file="/WEB-INF/include/header.jsp" %>
+<%@include file="/WEB-INF/include/header.jsp" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,16 +19,14 @@
 <script src="/resources/fileUpload/all.fine-uploader/all.fine-uploader.js"></script>
 <!--fileUpload, drag_drop, select :E -->
 <script>
-
 $(document).ready(function(){
-	 
-	 $('#summernote').summernote({
-	        placeholder: 'Write contents',
-	        height: 400,
-	        minHeight: null,             // set minimum height of editor
-	        maxHeight: null,             // set maximum height of editor
-	      });
-	 
+	$('#summernote').summernote({
+        placeholder: 'Write contents',
+        height: 400,
+        minHeight: null,             // set minimum height of editor
+        maxHeight: null,             // set maximum height of editor
+      });
+	
 	 ////////////////////////////////////////////////////////////
 	dropFileInit($("#fileUpload"));
 	
@@ -78,9 +76,10 @@ $(document).ready(function(){
 </head>
 <body>
  
+	
+
+<div class=container-fluid">
 	<jsp:include page="/WEB-INF/include/top.jsp" flush="true" />
-
-
 	<div class="board_div">
 		<h2 class="page-header">Write</h2>
 
@@ -100,32 +99,39 @@ $(document).ready(function(){
         	<input type="hidden" id="bbs_sno" name="bbs_sno" value="${boardSearchVO.bbs_sno}"/>
         	
 		  <div class="form-group">
-		    <label for="inputEmail3" class="col-sm-2 control-label">Title</label>
-		    <div class="col-sm-10">
+		    <label for="inputEmail3" class="col-md-2 control-label">Title</label>
+		    <div class="col-md-10">
 		      <input type="text" class="form-control" id="bbs_title" name="bbs_title" placeholder="Title">
 		    </div>
 		  </div>
 
 		  <div class="form-group">
-		   	<label for="inputPassword3" class="col-sm-2 control-label">contents</label>
-		   	<div class="col-sm-10">
-		   		<div id="summernote"></div>
+		   	<label for="inputPassword3" class="col-md-2 control-label">contents</label>
+		   	<div class="col-md-10">
+				<div id="summernote"></div>		   		
 		   	</div>
 		  </div>
-		  
+		  <%-- 
 		 <div class="form-group">
-		    <label for="inputEmail3" class="col-sm-2 control-label">첨부파일</label>
-		    <div class="col-sm-10">
+		    <label for="inputEmail3" class="col-md-2 control-label">첨부파일</label>
+		    <div class="col-md-10">
 		      <div id="fine-uploader"></div>
     			<!-- Fine Uploader -->
     			<jsp:include page="/resources/fileUpload/all.fine-uploader/lee/division_script.jsp" flush="true" />
 		    </div>
 		  </div>
-
-
+ --%>
 		</form>
-
-        <div class="pull-right"><a href="#" class="btn btn-primary btn-success boardAddBtn"><span class="glyphicon glyphicon-pencil"></span> Write</a></div>
+		<div class="form-group">
+		   	<div class="col-md-2"></div>
+		   	<div class="col-md-10">
+				<div class="pull-right"><a href="#" class="btn btn-primary btn-success boardAddBtn"><span class="glyphicon glyphicon-pencil"></span>Write</a></div>		   		
+		   	</div>
+		  </div>
+        
+       
+    </div>
+    
     </div>
 </body>
 </html>

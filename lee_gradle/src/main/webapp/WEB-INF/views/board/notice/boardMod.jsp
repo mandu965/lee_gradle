@@ -99,7 +99,7 @@ $(document).ready(function(){
 		   		<div id="summernote">${boardVO.bbs_contents}</div>
 		   	</div>
 		  </div>
-		  
+		   <%-- 
 		  <div class="form-group">
 		    <label for="inputEmail3" class="col-sm-2 control-label">첨부파일</label>
 		    <div class="col-sm-10">
@@ -108,7 +108,7 @@ $(document).ready(function(){
     			<jsp:include page="/resources/fileUpload/all.fine-uploader/lee/division_script.jsp" flush="true" />
 		    </div>
 		  </div>
-		  
+		 
 		  <div class="form-group">
 		   	<label for="inputPassword3" class="col-sm-2 control-label">files</label>
 		   	<div class="col-sm-10">
@@ -122,8 +122,14 @@ $(document).ready(function(){
 		   	</div>
 		  </div>
 		</form> 
-		
-        <div class="pull-right"><a href="#" class="btn btn-primary btn-success boardModBtn"><span class="glyphicon glyphicon-pencil"></span> Save</a></div>
+		 --%>
+		<div class="form-group">
+		   	<div class="col-md-2"></div>
+		   	<div class="col-md-10">
+				<div class="pull-right"><a href="#" class="btn btn-primary btn-success boardModBtn"><span class="glyphicon glyphicon-pencil"></span> Save</a></div>		   		
+		   	</div>
+		  </div>		 
+        
         
     </div>
 </body>

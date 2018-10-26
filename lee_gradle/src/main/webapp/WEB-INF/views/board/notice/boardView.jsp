@@ -41,9 +41,7 @@ $(document).ready(function(){
 				$('#boarCmntList').html(html);
 				
 				//등록
-				$("#cmntBtnAdd")
-				.button({icons:{primary:'ui-icon-document'}})
-				.click(function(){
+				$("#cmntBtnAdd").click(function(){
 					boardCmntList('Add');
 					return false;
 				});
@@ -65,8 +63,7 @@ $(document).ready(function(){
 				});
 				
 				//삭제
-				$(".cmntDel")
-				.click(function(){
+				$(".cmntDel").click(function(){
 					var cmnt_sno = $(this).attr('id');
 					var target = $(this).data('target');
 					
@@ -87,7 +84,8 @@ $(document).ready(function(){
 <title>Lee's library</title>
 </head>
 <body>
- 
+
+ <div class=container-fluid">
 	<jsp:include page="/WEB-INF/include/top.jsp" flush="true" />
 
 	<div class="board_div">
@@ -109,43 +107,31 @@ $(document).ready(function(){
         	<input type="hidden" id="atch_file_sno" name="atch_file_sno" value="${boardVO.bbs_sno}"/>
         	<input type="hidden" id="bbs_sno" name="bbs_sno" value="${boardVO.bbs_sno}"/>
         	<input type="hidden" id="blt_rsrc_sno" name="blt_rsrc_sno" value="${boardVO.blt_rsrc_sno}"/>
-        	
+
         <div class="view">
-        <%-- 
-	        <div class="form-group">
-			    <label for="inputEmail3" class="col-sm-1 control-label">Title</label>
-			    <div class="col-sm-11">
-			      ${boardVO.bbs_title}
-			    </div>
-			  </div>
-			  
-			  <div class="form-group">
-			    <label for="inputEmail3" class="col-sm-1 control-label">contents</label>
-			    <div class="col-sm-11">
-			      ${boardVO.bbs_contents}
-			    </div>
-			  </div>
-			   --%>
 			  <table class="table table-bordered">
-  				<tr>
-  					<td colspan="5"  class="view_title">${boardVO.bbs_title}</td>
+  				 <tr class="d-flex">
+  					<td colspan="5" class="col-md-12">
+  						<div  class="view_title">${boardVO.bbs_title}</div>
+  						<div class="padding_0 col-sm-12 d-non d-md-none"><c:out value="${boardVO.usr_id}"/> | <c:out value="${boardVO.bbs_cnt}"/> |  <c:out value="${boardVO.reg_date}"/></div>
+  					</td>
   				</tr>
-  				<tr class="active">
-	  				<td class="col-sm-2">이정훈 </td>
-	  				<td class="col-sm-1">댓글 2</td>
-	  				<td class="col-sm-4">&nbsp;</td>
-	  				<td class="col-sm-3">2018-10-10 :15:30</td>
-	  				<td class="col-sm-2">조회수 3</td>
+  			<tr class="d-flex">
+	  				<td class="col-md-2 d-none d-md-inline">이정훈 </td>
+	  				<td class="col-md-1 d-none d-md-inline">댓글 2</td>
+	  				<td class="col-md-4 d-none d-md-inline">&nbsp;</td>
+	  				<td class="col-md-3 d-none d-md-inline">2018-10-10 :15:30</td>
+	  				<td class="col-md-2 d-none d-md-inline">조회수 3</td>
   				</tr>
-  				<tr>
-  					<td colspan="5" > ${boardVO.bbs_contents}</td>
+  				<tr class="d-flex">
+  					<td  colspan="5" class="col-md-12"> ${boardVO.bbs_contents}</td>
   				</tr>
 			</table>
         </div>	
+
 		  
-		  
-		  
-		  <%-- <div class="form-group">
+		  <%-- 
+		  <div class="form-group">
 		   	<label for="inputPassword3" class="col-sm-2 control-label">files</label>
 		   	<div class="col-sm-10">
 		   		 <c:choose> 
@@ -156,8 +142,8 @@ $(document).ready(function(){
 					</c:when>
 				</c:choose>
 		   	</div>
-		  </div> --%>
-		  
+		  </div>
+		   --%>
 		 	
 		</form>
 
@@ -169,6 +155,6 @@ $(document).ready(function(){
     </div>
     
 
-
+</div>
 </body>
 </html>

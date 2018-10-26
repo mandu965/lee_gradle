@@ -1,9 +1,10 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@include file="/WEB-INF/include/header.jsp" %>
-<head>
 
+ <%@page contentType="text/html" pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script>
-$(document).ready(function(){
+
+$(document).ready(function(){ 
+	
 	$("#singUpBtn").click(function(){
 		location.href='/join/usrAdd';
 		return false;
@@ -41,37 +42,51 @@ $(document).ready(function(){
 			}
 		});
 		return false;
-	});
+	}); 
+	
 })
 </script>
 
-</head>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <a class="navbar-brand" href="/">LEe</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/">Lee Project</a>
-          <a class="navbar-brand" href="/board/notice/boardList?bbs_sno=1">notice</a>
-          <a class="navbar-brand" href="/board/board/boardList">board</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right" id="signForm">
-          	<c:choose>
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/board/notice/boardList?bbs_sno=1">공지</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/schedule/scheduleList">일정</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="/board/board/boardList">Disabled 테스트</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0" id="signForm">
+          <c:choose>
 	            <c:when test="${empty usrSession }">
 		            <div class="form-group has-success has-feedback" >
-		              <input type="text" placeholder="Id" class="form-control" id="id" name="id" value="admin">
+		              <input class="form-control mr-sm-2" type="text" placeholder="Id" aria-label="Search"  id="id" name="id" value="admin">
 		            </div>
 		            <div class="form-group ">
-		              <input type="password" placeholder="Password" class="form-control" id="pw" name="pw" value="1">
+		              <input class="form-control mr-sm-2" type="password" placeholder="Password" aria-label="Search"  id="pw" name="pw" value="1">
 		            </div>
-	            	<button type="submit" class="btn btn-success" id="singInBtn">Sign in</button>
-	            	<button class="btn btn-info" id="singUpBtn">Sign up</button>
+	            	<button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="singInBtn">로그인</button>
+	            	<button class="btn btn-outline-primary my-2 my-sm-0" type="submit" id="singUpBtn">회원가입</button>
 
 	            </c:when>
 	            <c:otherwise>
@@ -83,7 +98,8 @@ $(document).ready(function(){
 	            	
 	            </c:otherwise>
             </c:choose>
-          </form>
-        </div><!--/.navbar-collapse -->
+            
+        </form>
       </div>
     </nav>
+    <br>

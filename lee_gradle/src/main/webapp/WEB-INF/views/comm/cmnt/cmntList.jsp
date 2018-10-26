@@ -1,7 +1,7 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@include file="/WEB-INF/include/header.jsp" %>
+ <%@page contentType="text/html" pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+  
 
-<head>
 	<script type="text/javascript">
 		$(document).ready(function() {
 		var addResult='${addResult}'	
@@ -9,9 +9,11 @@
 				alert('Comment Add Success');
 			}
 		
+		
+		
 		});
 	</script>
-</head>
+
 	<div id="modal_div"></div>
 	<div class="detail_table">
 		<form class="form-horizontal"  id="cmntForm" name="cmntForm" method="post">
@@ -33,8 +35,9 @@
 								<dt class="writeinfo">
 									<c:out value="${vo.usr_id}"/> | <c:out value="${vo.reg_date}"/> |
 									<c:if test="${usrSession.usr_auth_cd=='103' || usrSession.usr_no == vo.reg_usr_no}" >
-										<a href='#;' id= "${vo.cmnt_sno}" class="cmntMod" data-toggle="modal" href="#;" data-target="#modal-testNew" role="button" data-backdrop="static"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
-										<a href='#;' id= "${vo.cmnt_sno}" class="cmntDel" data-toggle="modal" href="#;" data-target="#modal-testNew" role="button" data-backdrop="static"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+										<a href='#;' id= "${vo.cmnt_sno}" class="cmntMod" data-toggle="modal" href="#;" data-target="#modal-testNew" role="button" data-backdrop="static"><i class="fa fa-edit"></i></a>
+										<a href='#;' id= "${vo.cmnt_sno}" class="cmntDel" data-toggle="modal" href="#;" data-target="#modal-testNew" role="button" data-backdrop="static"><i class="fa fa-trash"></i></a>
+										<span class="oi oi-bug"></span>
 									</c:if>
 								</dt>
 								<dd class="contents"><pre class="cmntContent">${vo.cmnt_contents}</pre></dd>
@@ -43,6 +46,7 @@
 					</c:when>
 				</c:choose>
 			</div>
+			
 		</div>
 		  <div class="form-group">
 		    <label for="inputEmail3" class="col-sm-1 control-label">Content</label>
