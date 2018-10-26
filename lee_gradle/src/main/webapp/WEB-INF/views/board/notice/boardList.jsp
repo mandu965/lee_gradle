@@ -67,11 +67,12 @@ $(document).ready(function(){
             <table class="table table-hover"> <!-- table-hover -->
               <thead>
                <tr class="d-flex">
-                  <th class="col-md-1 d-none d-md-inline">번호</th>
-                  <th class=" col-md-6 col-sm-12">제목</th>
-                  <th class="col-md-2 d-none d-md-inline">글쓴이(ID)</th>
-                  <th class="col-md-1  d-none d-md-inline">조회수</th>
-                  <th class="col-md-2 d-none d-md-inline">등록일</th>
+                  <th class="w-10 d-none d-md-inline">번호</th>
+                  <!-- <th class=" col-md-6 col-sm-12">제목</th> -->
+                  <th class=" w-50 ">제목</th>
+                  <th class="w-10 d-none d-md-inline">글쓴이(ID)</th>
+                  <th class="w-10  d-none d-md-inline">조회수</th>
+                  <th class="w-20 d-none d-md-inline">등록일</th>
                 </tr>
               </thead>
               <tbody>
@@ -80,7 +81,7 @@ $(document).ready(function(){
 						<c:forEach items="${articleList}" var="vo" varStatus="idx">
 	
 							<tr class="d-flex">
-								<td class="col-sm-1 d-none d-md-inline"><c:choose>
+								<td class="w-10 d-none d-md-inline"><c:choose>
 										<c:when test="${count > pageSize}"> <!-- ex) count= 11, pageSize=10 -->
 											<c:out
 												value="${count - pageSize*(pageIndex-1) - idx.count +1}" /> <!-- 11,10,9,8.......... -->
@@ -92,7 +93,7 @@ $(document).ready(function(){
 									</c:choose>
 								</td>
 
-								<td class="col-md-6 col-sm-12">
+								<td class="w-50  col-sm-12">
 									<a id="${vo.blt_rsrc_sno}" class="boardView" data-toggle="modal" href="#;" data-target="#modal-testNew" role="button" data-backdrop="static">
 										<span data-tooltip-text="<c:out value='${vo.bbs_title}'/>">${vo.bbs_title}</span>
 									</a>
@@ -100,9 +101,9 @@ $(document).ready(function(){
 									<div class="padding_0  d-non d-md-none"  ><c:out value="${vo.usr_id}"/> | <c:out value="${vo.bbs_cnt}"/> |  <c:out value="${vo.reg_date}"/></div>
 									<!--md 이하에서는 모이지 말게 하라  -->
 								</td>
-								<td class=" col-md-2 d-none d-md-inline"><c:out value="${vo.usr_id}"/></td>
-								<td class="col-md-1 d-none d-md-inline"><c:out value="${vo.bbs_cnt}"/></td>
-								<td class=" col-md-2 d-none d-md-inline"><c:out value="${vo.reg_date}"/></td>
+								<td class=" w-10 d-none d-md-inline"><c:out value="${vo.usr_id}"/></td>
+								<td class="w-10 d-none d-md-inline"><c:out value="${vo.bbs_cnt}"/></td>
+								<td class=" w-20 d-none d-md-inline"><c:out value="${vo.reg_date}"/></td>
 								<!--md 이하에서는 모이지 말게 하라, md 이상에서 보여라  -->
 							</tr>
 						</c:forEach>

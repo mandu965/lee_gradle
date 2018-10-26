@@ -111,25 +111,37 @@ $(document).ready(function(){
         <div class="view">
 			  <table class="table table-bordered">
   				 <tr class="d-flex">
-  					<td colspan="5" class="col-md-12">
+  					<td colspan="5" class="w-100">
   						<div  class="view_title">${boardVO.bbs_title}</div>
   						<div class="padding_0 col-sm-12 d-non d-md-none"><c:out value="${boardVO.usr_id}"/> | <c:out value="${boardVO.bbs_cnt}"/> |  <c:out value="${boardVO.reg_date}"/></div>
   					</td>
   				</tr>
+  		 		
   			<tr class="d-flex">
-	  				<td class="col-md-2 d-none d-md-inline">이정훈 </td>
-	  				<td class="col-md-1 d-none d-md-inline">댓글 2</td>
-	  				<td class="col-md-4 d-none d-md-inline">&nbsp;</td>
-	  				<td class="col-md-3 d-none d-md-inline">2018-10-10 :15:30</td>
-	  				<td class="col-md-2 d-none d-md-inline">조회수 3</td>
-  				</tr>
+	  				<td class="w-20 d-none d-md-inline">이정훈222 </td>
+	  				<td class="w-10 d-none d-md-inline">댓글 2</td>
+	  				<td class="w-40 d-none d-md-inline">&nbsp;</td>
+	  				<td class="w-20 d-none d-md-inline">2018-10-10 :15:30</td>
+	  				<td class="w-10 d-none d-md-inline">조회수 3</td>
+  				</tr> 
+  				
   				<tr class="d-flex">
-  					<td  colspan="5" class="col-md-12"> ${boardVO.bbs_contents}</td>
+  					<td  colspan="5" class="w-100"> ${boardVO.bbs_contents}</td>
   				</tr>
 			</table>
         </div>	
 
-		  
+		  <div class="row">
+    <div class="col">
+      1 of 377
+    </div>
+    <div class="col-6">
+      2 of 3 (wider)
+    </div>
+    <div class="col-5">
+      3 of 3
+    </div>
+  </div>
 		  <%-- 
 		  <div class="form-group">
 		   	<label for="inputPassword3" class="col-sm-2 control-label">files</label>
